@@ -1,5 +1,63 @@
 const info = {
 
+
+    // bløtkake: {
+    //     cakename: 'Bløtkake',
+    //     cakeFlavours: ['Jordbær', 'bringebær', 'ananas', 'aprikos', 'bryllupsblanding',
+    //         'eple', 'vaniljekrem', 'valnøtter', 'mandler', 'krokan', 'banan',
+    //         'Rørte Bær', 'Bringebærmousse', 'jordbærmousse', 'Sjokolademousse', 'Sjømannskake (Mandler & Ananas)'
+    //     ],
+    //     cakeBase: ['Sukkerbrødbunn']
+    // },
+
+    // bløtkake_glutenfri: {
+    //     cakename: 'Bløtkake - Glutenfri',
+    //     cakeFlavours: ['Jordbær', 'bringebær', 'ananas', 'aprikos', 'bryllupsblanding',
+    //         'eple', 'vaniljekrem', 'valnøtter', 'mandler', 'krokan', 'banan',
+    //         'Rørte Bær', 'Bringebærmousse', 'jordbærmousse', 'Sjokolademousse', 'Sjømannskake (Mandler & Ananas)'
+    //     ],
+    //     cakeBase: ['Sukkerbrødbunn']
+    // },
+
+    // sjokoladekake: {
+    //     cakename: 'Sjokoladekake',
+    //     cakeFlavours: ['Sjokolade', 'Bringebær', 'Banan', 'Vaniljekrem', 'Ostekrem', 'Bringebærmousse', 'Oreokrem'],
+    //     cakeBase: ['Sjokoladebunn']
+    // },
+
+    // moussekake: {
+    //     cakename: 'Moussekake',
+    //     cakeFlavours: ['Bringebær', 'Jordbær', 'Sjokolade'],
+    //     cakeBase: ['Sjokoladebunn', 'Browniebunn', 'Sukkerbrødbunn', 'Nøttebunn']
+    // },
+
+    // raw_kake: {
+    //     cakename: 'Raw kaker',
+    //     cakeFlavours: ['sjokolade', 'Bringebær', 'blåbær', 'skogsbær'],
+    //     cakeBase: ['browniebunn', 'Sjokoladebunn', 'sukkerbrødbunn', 'nøttebunn']
+    // },
+
+
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const model = {
+
+
     workers: [
         { id: 1, name: 'Tone', role: 'Admin' },
         { id: 2, name: 'Ansatt 1', role: 'Baker' },
@@ -19,7 +77,7 @@ const info = {
         { id: 6, hours: '09:00 - 17:00' },
     ],
 
-    
+
 
     cakeTypes: [
         { id: 1, cake: 'Bløtekake', fillings: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], base: [3] },
@@ -57,65 +115,7 @@ const info = {
         { id: 4, base: 'Nøttebunn' },
         { id: 5, base: 'Sjokoladebunn Glutenfri' },
         { id: 6, base: 'Standardbunn' },
-    ]
-
-
-        // bløtkake: {
-        //     cakename: 'Bløtkake',
-        //     cakeFlavours: ['Jordbær', 'bringebær', 'ananas', 'aprikos', 'bryllupsblanding',
-        //         'eple', 'vaniljekrem', 'valnøtter', 'mandler', 'krokan', 'banan',
-        //         'Rørte Bær', 'Bringebærmousse', 'jordbærmousse', 'Sjokolademousse', 'Sjømannskake (Mandler & Ananas)'
-        //     ],
-        //     cakeBase: ['Sukkerbrødbunn']
-        // },
-
-        // bløtkake_glutenfri: {
-        //     cakename: 'Bløtkake - Glutenfri',
-        //     cakeFlavours: ['Jordbær', 'bringebær', 'ananas', 'aprikos', 'bryllupsblanding',
-        //         'eple', 'vaniljekrem', 'valnøtter', 'mandler', 'krokan', 'banan',
-        //         'Rørte Bær', 'Bringebærmousse', 'jordbærmousse', 'Sjokolademousse', 'Sjømannskake (Mandler & Ananas)'
-        //     ],
-        //     cakeBase: ['Sukkerbrødbunn']
-        // },
-
-        // sjokoladekake: {
-        //     cakename: 'Sjokoladekake',
-        //     cakeFlavours: ['Sjokolade', 'Bringebær', 'Banan', 'Vaniljekrem', 'Ostekrem', 'Bringebærmousse', 'Oreokrem'],
-        //     cakeBase: ['Sjokoladebunn']
-        // },
-
-        // moussekake: {
-        //     cakename: 'Moussekake',
-        //     cakeFlavours: ['Bringebær', 'Jordbær', 'Sjokolade'],
-        //     cakeBase: ['Sjokoladebunn', 'Browniebunn', 'Sukkerbrødbunn', 'Nøttebunn']
-        // },
-
-        // raw_kake: {
-        //     cakename: 'Raw kaker',
-        //     cakeFlavours: ['sjokolade', 'Bringebær', 'blåbær', 'skogsbær'],
-        //     cakeBase: ['browniebunn', 'Sjokoladebunn', 'sukkerbrødbunn', 'nøttebunn']
-        // },
-
-
-    },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const model = {
-
+    ],
 
 
     admin: {
