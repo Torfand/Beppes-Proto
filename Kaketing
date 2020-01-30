@@ -1,0 +1,31 @@
+moussekaker:
+smak: Bringebær, Jordbær, Sjokolade
+bunn: sjokoladebunn, browniebunn, sukkerbrødbunn, nøttebunn
+
+raw kaker:
+smak: sjokolade, Bringebær, blåbær, skogsbær
+bunn: sjokoladebunn, browniebunn, sukkerbrødbunn, nøttebunn
+
+bløtkake:
+smak: jordbær, bringebær, ananas, aprikos, bryllupsblanding, eple, vaniljekrem, valnøtter, mandler, krokan, banan, rørte bær, bringebærmousse, jordbærmousse, sjokolademousse, sjømannskake (ananas & mandler)
+bunn: sukkerbrødbunn
+
+bløtkake glutenfri:
+smak: jordbær, bringebær, ananas, aprikos, bryllupsblanding, eple, vaniljekrem, valnøtter, mandler, krokan, banan, rørte bær, bringebærmousse, jordbærmousse, sjokolademousse
+bunn: sukkerbrødbunn
+
+sjokoladekake:
+smak: sjokolade, bringebær, banan, vaniljekrem, ostekrem, bringebærmousse, oreokrem
+bunn: sjokoladebunn
+
+glutenfri, eggefri, melkefri sjokoladekake:
+smak: sjokolade, bringebær, banan, vaniljekrem, ostekrem, bringebærmousse, oreokrem
+bunn: sjokoladebunn glutenfri
+
+ostekake:
+smak: bringebær
+bunn: standard
+
+gulrotkake:
+smak: standard
+bunn: standard?
