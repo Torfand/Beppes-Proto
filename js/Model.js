@@ -35,7 +35,7 @@ const model = {
     admin: {
         menuItems: [
             { createFunction: 'Calendar', buttonName: 'Min kalender' },
-            { createFunction: 'Orders', buttonName: 'Bestillinger' },
+            { createFunction: 'OrdersMainMenu', buttonName: 'Bestillinger' },
 
         ],
         orderMenuItems: [

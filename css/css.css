@@ -1,0 +1,35 @@
+body {
+    background-color: aqua;
+    background-size: 100vw 100vh;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.div1 {
+    grid-area: 4 / 6 / 11 / 8;
+}
+
+.div2 {
+    grid-area: 1 / 11 / 2 / 13;
+}
+
+.div3 {
+    grid-area: 2 / 6 / 3 / 8;
+}
+
+.menuButtons {
+    height: 100px;
+    width: 250px;
+    margin: 10px;
+}
+
+.logoutButton {
+    height: 70px;
+    width: 150px;
+}
