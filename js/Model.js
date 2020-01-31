@@ -1,44 +1,4 @@
-const info = {
 
-
-    // bløtkake: {
-    //     cakename: 'Bløtkake',
-    //     cakeFlavours: ['Jordbær', 'bringebær', 'ananas', 'aprikos', 'bryllupsblanding',
-    //         'eple', 'vaniljekrem', 'valnøtter', 'mandler', 'krokan', 'banan',
-    //         'Rørte Bær', 'Bringebærmousse', 'jordbærmousse', 'Sjokolademousse', 'Sjømannskake (Mandler & Ananas)'
-    //     ],
-    //     cakeBase: ['Sukkerbrødbunn']
-    // },
-
-    // bløtkake_glutenfri: {
-    //     cakename: 'Bløtkake - Glutenfri',
-    //     cakeFlavours: ['Jordbær', 'bringebær', 'ananas', 'aprikos', 'bryllupsblanding',
-    //         'eple', 'vaniljekrem', 'valnøtter', 'mandler', 'krokan', 'banan',
-    //         'Rørte Bær', 'Bringebærmousse', 'jordbærmousse', 'Sjokolademousse', 'Sjømannskake (Mandler & Ananas)'
-    //     ],
-    //     cakeBase: ['Sukkerbrødbunn']
-    // },
-
-    // sjokoladekake: {
-    //     cakename: 'Sjokoladekake',
-    //     cakeFlavours: ['Sjokolade', 'Bringebær', 'Banan', 'Vaniljekrem', 'Ostekrem', 'Bringebærmousse', 'Oreokrem'],
-    //     cakeBase: ['Sjokoladebunn']
-    // },
-
-    // moussekake: {
-    //     cakename: 'Moussekake',
-    //     cakeFlavours: ['Bringebær', 'Jordbær', 'Sjokolade'],
-    //     cakeBase: ['Sjokoladebunn', 'Browniebunn', 'Sukkerbrødbunn', 'Nøttebunn']
-    // },
-
-    // raw_kake: {
-    //     cakename: 'Raw kaker',
-    //     cakeFlavours: ['sjokolade', 'Bringebær', 'blåbær', 'skogsbær'],
-    //     cakeBase: ['browniebunn', 'Sjokoladebunn', 'sukkerbrødbunn', 'nøttebunn']
-    // },
-
-
-},
 
 
 
@@ -129,7 +89,16 @@ const model = {
             { createFunction: 'Administrative', buttonName: 'Administrativt' },
 
         ],
+        orderMenuItems: [
 
+            { createFunction: 'AddOrder', buttonName: 'Legg til Bestilling' },
+            { createFunction: 'Billing', buttonName: 'Til Fakturering' },
+            { createFunction: 'ApprovedOrders', buttonName: 'Godkjente Bestillinger' },
+            { createFunction: 'CanceledOrders', buttonName: 'Kanselerte Bestillinger' },
+           
+
+        ],
+        
         calendarItems: [{
             months: ['Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Desember'],
             day: ['Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag', 'Søndag'],
