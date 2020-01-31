@@ -1,10 +1,10 @@
 const model = {
 
-
+    // NO CHANGES!!!!!
 
     cakeTypes: [
-        { id: 1, name: 'Bløtekake Rund Med Marsipan', cakeFillings: [1], cakeBase: [1], addOns: [1], cakeSize: [1]},
-        { id: 3, name: 'Sjokoladekake Standard', addOns: [1, 2], cakeSize: [2], cakePrice: [2]},
+        { id: 1, name: 'Bløtekake Rund Med Marsipan', cakeFillings: [1], cakeBase: [1], addOns: [1], cakeSize: [1] },
+        { id: 3, name: 'Sjokoladekake Standard', addOns: [1, 2], cakeSize: [2], cakePrice: [2] },
     ],
 
 
