@@ -17,7 +17,7 @@ function updateView() {
         `
 
     }
-    html += `</div>`
+    html += `</div>`;
     output.innerHTML = html;
 }
 
@@ -36,7 +36,7 @@ function OrdersMainMenu() {
         html +=
             `<button onclick="${button.createFunction}()" class="menuButtons">${button.buttonName}</button>`
     }
-    html += `</div>`
+    html += `</div>`;
     output.innerHTML = html;
 
 }
@@ -47,9 +47,7 @@ function OrdersMainMenu() {
 function Calendar() {
     html = '';
     html += `
-     <button onclick="updateView()" class="div4 backButton">Back</button>
-     
-    `
+     <button onclick="updateView()" class="div4 backButton">Back</button>`;
     output.innerHTML = html;
 }
 function AddOrder() {
@@ -64,7 +62,7 @@ function AddOrder() {
      Id-Nummer: <input id="idNumber" type ="text" value="Id Nummer her"></input>
      </div>
      </br>
-     </hr>`
+     </hr>`;
     Cakeloops();
 }
 
@@ -106,9 +104,7 @@ function RestOfForm() {
     Totalbeløp: <div>${model.cakeSize[0].BasePrice}.-</div>
     Betale i kasse: <button onclick=""></button>
     Til Fakturering: <button onclick=""></button>
-    </div>
-    
-    `;
+    </div>`;
     output.innerHTML = html;
 }
 
@@ -134,9 +130,7 @@ function Billing() {
 
 function ApprovedOrders() {
     html = '';
-    html += `
-     <h1 class="div3">Godkjente Bestillinger></h1>
-     <div class="div1"> `
+    html += ` <h1 class="div3">Godkjente Bestillinger></h1> <div class="div1">`
      for( bills of model.admin.orders) {
          if (bills.isApproved == true) {
              html += `${bills.name} ${bills.cakeType} ${bills.deliveryTime}

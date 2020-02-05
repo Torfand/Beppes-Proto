@@ -64,7 +64,7 @@ function AddOrder() {
      Id-Nummer: <input id="idNumber" type ="text" value="Id Nummer her"></input>
      </div>
      </br>
-     </hr>`
+     </hr>`;
     Cakeloops();
 }
 
@@ -83,9 +83,7 @@ function Cakeloops() {
                     Fyll:
                         <select>
                          <option>${sizeHtml}</option>
-                        </select>
-               
-            `;
+                        </select>`;
     }
     output.innerHTML = html;
 }
