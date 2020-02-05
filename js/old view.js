@@ -106,9 +106,41 @@ function RestOfForm() {
     Totalbeløp: <div>${model.cakeSize[0].BasePrice}.-</div>
     Betale i kasse: <button onclick=""></button>
     Til Fakturering: <button onclick=""></button>
-    </d
+    </div>
     
     `;
     output.innerHTML = html;
 }
 
+function Billing() {
+    html = ''
+    html +=
+        `<h1 class="div3">Til Fakturering</h1>
+        <div class="div1">`
+    for (bills of model.admin.orders) {
+        if (bills.toBilling == true) {
+            html += ` ${bills.name}  ${bills.cakeType}   ${bills.deliveryTime}
+            <button>Se Ordre</button>  <button>Godkjenn</button>
+                                   `
+            if (bills.delivery == true) {
+                html += `Skal Leveres`
+            }
+
+        }
+    }
+    html += `</div>`;
+    output.innerHTML = html;
+}
+
+function ApprovedOrders() {
+    html = '';
+    html += `
+     <h1 class="div3">Godkjente Bestillinger></h1>
+     <div class="div1"> `
+     for( bills of model.admin.orders) {
+         if (bills.isApproved == true) {
+             html += `${bills.name} ${bills.cakeType} ${bills.deliveryTime}
+             <button> Se ordre </button> `
+         }
+     }
+}

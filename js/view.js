@@ -73,7 +73,7 @@ function Cakeloops() {
     for (let cakeType of model.cakeTypes) {
         let sizeHtml = '';
         for (let sizeId of cakeType.cakeSize) {
-            let sizes = model.cakeSize.filter(f=>f.id == sizeId)[0];
+            let sizes = model.cakeSize.filter(f=>f.id == sizeId);
             sizeHtml += `<option>${sizes.size}</option>`;
         }
         html += `</select>
