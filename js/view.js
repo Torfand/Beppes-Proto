@@ -34,7 +34,7 @@ function OrdersMainMenu() {
 
     for (button of model.admin.orderMenuItems) {
         html +=
-            `<button onclick="${button.createFunction}" class="menuButtons">${button.buttonName}</button>`
+            `<button onclick="${button.createFunction}()" class="menuButtons">${button.buttonName}</button>`
     }
     html += `</div>`
     output.innerHTML = html;
@@ -52,3 +52,88 @@ function Calendar() {
     `
     output.innerHTML = html;
 }
+function AddOrder() {
+    html = '';
+    html += `
+     <div class="orderForm">
+     Navn: <input id="name" type="text" value="Navn her"</input>
+     Firma: <input id="firm" type="text" value="Firma her"</input>   
+     Kontakt Person: <input id="contact" type="text" value="Navn på Kontaktperson"></input> 
+     Telefon Nummer: <input id="number" type="text" value="Tlf her"></input>
+     Epost: <input id="mail" type="text" value="Epost her"></input>
+     Id-Nummer: <input id="idNumber" type ="text" value="Id Nummer her"></input>
+     </div>
+     </br>
+     </hr>`
+    Cakeloops();
+}
+
+function Cakeloops() {
+    let html = '<select>';
+    for (let cakeType of model.cakeTypes) {
+        let sizeHtml = '';
+        for (let sizeId of cakeType.cakeSize) {
+            let sizes = model.cakeSize.filter(f=>f.id == sizeId)[0];
+            sizeHtml += `<option>${sizes.size}</option>`;
+        }
+        html += `</select>
+        <select>
+                <option>${cakeType.name}</option>
+                </select>
+                    Fyll:
+                        <select>
+                         <option>${sizeHtml}</option>
+                        </select>
+               
+            `;
+    }
+    output.innerHTML = html;
+}
+
+
+
+
+
+    // html += `<div class="foodForm">
+    //     Kaketype:<select id="cakeSelector">`;
+    // for (cakes of model.cakeTypes) {
+    //     html += `
+    //      <option>${cakes.name}</option>`;
+    // }
+    // html += `</select>`;
+    // html += `Antall Pers:<select>`;
+    // for (sizes of model.cakeSize) {
+    //     html += `<option>${sizes.size}</option>`;
+    // }
+    // html += `</select>`;
+    // html += `Tillegg: <select>`;
+    // for (addon of model.addOns) {
+    //     html += `<option>${addon.name}</option>`;
+    // }
+    // html += `</select>`;
+//     RestOfForm();
+
+// function RestOfForm() {
+//     html += ` </br>
+//     Med marsipan: <input type="checkbox"></input> </br>
+//     Uten marsipan: <input type="checkbox"></input> </br>
+//     Notat: <input id="note" type="text" value="Notat til oss her"></input>
+//     Hentes: <input type="checkbox"></input> </br>
+//     Leveres: <input type="checkbox"></input> </br>
+//     Leverings Adresse: <input id="deliveryAdress" type="text" value="Adresse her"></input>
+//     Dato: <input type="text" id="deliveryDate" value="Leverings dato her"></input>
+//     Tidspunkt: <input id="timeOfDelivery" type="text" value="Hente/leveringstidspunkt"></input>
+//     Faktura nummer: <input id="invoiceNumber" type="text" value="Faktura nummer her"></input>
+//      </div>
+//      </br>
+//      </hr>
+//     <div class="finishOrder">
+//     Totalbeløp: <div>${model.cakeSize[0].BasePrice}.-</div>
+//     Betale i kasse: <button onclick=""></button>
+//     Til Fakturering: <button onclick=""></button>
+//     </div>
+    
+//     `;
+//     output.innerHTML = html;
+// }
+
