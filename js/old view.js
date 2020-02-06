@@ -1,4 +1,5 @@
 let html;
+const backHTML = `<button onclick="OrdersMainMenu()" class="div4 backButton">Back</button> `
 
 html = '';
 
@@ -6,7 +7,7 @@ function updateView() {
     html = '';
     html += `
     <button class="div2 logoutButton">Logg ut</button>
-    <h2 class="div3">ADMIN</h2>
+    <h2 class="div3">Tone Mette/admin</h2>
     <div class="div1">
     `;
 
@@ -18,7 +19,7 @@ function updateView() {
 
     }
     html += `</div>`;
-    output.innerHTML = html;
+    output.innerHTML = html + backHTML;
 }
 
 
@@ -37,7 +38,7 @@ function OrdersMainMenu() {
             `<button onclick="${button.createFunction}()" class="menuButtons">${button.buttonName}</button>`
     }
     html += `</div>`;
-    output.innerHTML = html;
+    output.innerHTML = html + backHTML;
 
 }
 
@@ -48,11 +49,13 @@ function Calendar() {
     html = '';
     html += `
      <button onclick="updateView()" class="div4 backButton">Back</button>`;
-    output.innerHTML = html;
+    output.innerHTML = html + backHTML;
 }
+
 function AddOrder() {
     html = '';
     html += `
+    <button onclick="OrdersMainMenu()" class="div4 backButton">Back</button>
      <div class="orderForm">
      Navn: <input id="name" type="text" value="Navn her"</input>
      Firma: <input id="firm" type="text" value="Firma her"</input>   
@@ -86,6 +89,7 @@ function Cakeloops() {
     html += `</select>`;
     RestOfForm();
 }
+
 function RestOfForm() {
     html += ` </br>
     Med marsipan: <input type="checkbox"></input> </br>
@@ -105,13 +109,15 @@ function RestOfForm() {
     Betale i kasse: <button onclick=""></button>
     Til Fakturering: <button onclick=""></button>
     </div>`;
-    output.innerHTML = html;
+    output.innerHTML = html + backHTML;
 }
 
 function Billing() {
     html = ''
     html +=
-        `<h1 class="div3">Til Fakturering</h1>
+        `
+        <button onclick="OrdersMainMenu()" class="div4 backButton">Back</button>
+        <h1 class="div3">Til Fakturering</h1>
         <div class="div1">`
     for (bills of model.admin.orders) {
         if (bills.toBilling == true) {
@@ -125,16 +131,39 @@ function Billing() {
         }
     }
     html += `</div>`;
-    output.innerHTML = html;
+    output.innerHTML = html + backHTML;
 }
 
 function ApprovedOrders() {
     html = '';
-    html += ` <h1 class="div3">Godkjente Bestillinger></h1> <div class="div1">`
-     for( bills of model.admin.orders) {
-         if (bills.isApproved == true) {
-             html += `${bills.name} ${bills.cakeType} ${bills.deliveryTime}
+    html += ` 
+    <button onclick="OrdersMainMenu()" class="div4 backButton">Back</button>
+    <h1 class="div3">Godkjente Bestillinger</h1> <div class="div1">`
+    for (bills of model.admin.orders) {
+        if (bills.isApproved == true) {
+            html += `${bills.name} ${bills.cakeType} ${bills.deliveryTime}
              <button> Se ordre </button> `
-         }
-     }
+
+        }
+    }
+    output.innerHTML = html;
+}
+
+
+function CanceledOrders() {
+    html = '';
+    html += `
+    <button onclick="OrdersMainMenu()" class="div4 backButton">Back</button>
+    <h1 class="div3">Kanselerte Bestillinger</h1> <div class="div1">`
+    for (bills of model.admin.orders) {
+        if (bills.isCanceled == true) {
+            html += `${bills.name} ${bills.cakeType} ${bills.deliveryTime}
+            <button> Se ordre </button>`
+        } else {
+            html = `
+            <div class="div1"> Ingen Ordre er Kanselerte </div>`
+        }
+
+    }
+    output.innerHTML = html + backHTML;
 }

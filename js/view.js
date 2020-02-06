@@ -6,7 +6,7 @@ function updateView() {
     html = '';
     html += `
     <button class="div2 logoutButton">Logg ut</button>
-    <h2 class="div3">ADMIN</h2>
+    <h2 class="div3">Tone Mette</h2>
     <div class="div1">
     `;
 
@@ -52,6 +52,7 @@ function Calendar() {
     `
     output.innerHTML = html;
 }
+
 function AddOrder() {
     html = '';
     html += `
@@ -73,7 +74,7 @@ function Cakeloops() {
     for (let cakeType of model.cakeTypes) {
         let sizeHtml = '';
         for (let sizeId of cakeType.cakeSize) {
-            let sizes = model.cakeSize.filter(f=>f.id == sizeId);
+            let sizes = model.cakeSize.filter(f => f.id == sizeId);
             sizeHtml += `<option>${sizes.size}</option>`;
         }
         html += `</select>
@@ -92,23 +93,23 @@ function Cakeloops() {
 
 
 
-    // html += `<div class="foodForm">
-    //     Kaketype:<select id="cakeSelector">`;
-    // for (cakes of model.cakeTypes) {
-    //     html += `
-    //      <option>${cakes.name}</option>`;
-    // }
-    // html += `</select>`;
-    // html += `Antall Pers:<select>`;
-    // for (sizes of model.cakeSize) {
-    //     html += `<option>${sizes.size}</option>`;
-    // }
-    // html += `</select>`;
-    // html += `Tillegg: <select>`;
-    // for (addon of model.addOns) {
-    //     html += `<option>${addon.name}</option>`;
-    // }
-    // html += `</select>`;
+// html += `<div class="foodForm">
+//     Kaketype:<select id="cakeSelector">`;
+// for (cakes of model.cakeTypes) {
+//     html += `
+//      <option>${cakes.name}</option>`;
+// }
+// html += `</select>`;
+// html += `Antall Pers:<select>`;
+// for (sizes of model.cakeSize) {
+//     html += `<option>${sizes.size}</option>`;
+// }
+// html += `</select>`;
+// html += `Tillegg: <select>`;
+// for (addon of model.addOns) {
+//     html += `<option>${addon.name}</option>`;
+// }
+// html += `</select>`;
 //     RestOfForm();
 
 // function RestOfForm() {
@@ -130,8 +131,7 @@ function Cakeloops() {
 //     Betale i kasse: <button onclick=""></button>
 //     Til Fakturering: <button onclick=""></button>
 //     </div>
-    
+
 //     `;
 //     output.innerHTML = html;
 // }
-

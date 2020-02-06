@@ -58,18 +58,32 @@ const model = {
 
 
 
-        orders: [
-            {
-                name: 'Ola Nordmann', cakeType: 'Bløtekake', delivery: false, deliveryTime: '', toBilling: true, isApproved: true
-                , isCanceled: false
-            },
-            {
-                name: 'Kari Nordmann', cakeType: 'Sjokoladekake', delivery: true, deliveryTime: '12:45', toBilling: false, isApproved: false,
+        orders: [{
+                name: 'Ola Nordmann',
+                cakeType: 'Bløtekake',
+                delivery: false,
+                deliveryTime: '',
+                toBilling: true,
+                isApproved: true,
                 isCanceled: false
             },
             {
-                name: 'Brødulf', cakeType: 'Sjokoladekake', delivery: false, deliveryTime: '', toBilling: false, isApproved: false,
-                isCanceled: true
+                name: 'Kari Nordmann',
+                cakeType: 'Sjokoladekake',
+                delivery: true,
+                deliveryTime: '12:45',
+                toBilling: false,
+                isApproved: false,
+                isCanceled: false
+            },
+            {
+                name: 'Brødulf',
+                cakeType: 'Sjokoladekake',
+                delivery: false,
+                deliveryTime: '',
+                toBilling: false,
+                isApproved: false,
+                isCanceled: false
             },
 
         ],
