@@ -7,7 +7,7 @@ function updateView() {
     html = '';
     html += `
     <button class="div2 logoutButton">Logg ut</button>
-    <h2 class="div3">Tone Mette/admin</h2>
+    <h2 class="div3">Admin</h2>
     <div class="div1">
     `;
 
@@ -73,13 +73,13 @@ function Cakeloops() {
     html += `<div class="foodForm">
         Kaketype:<select id="cakeSelector" oninput="model.admin.orderInProgress.cakeTypeId = this.value; AddOrder()">`;
     for (cakeType of model.cakeTypes) {
-        const selected = model.admin.orderInProgress.cakeTypeId == cakeType.id ? 'selected' : '';
+        const selected = model.orderInProgress.cakeTypeId == cakeType.id ? 'selected' : '';
         html += `<option ${selected} value="${cakeType.id}">${cakeType.name}</option>`;
     }
     html += `</select>`;
     html += `Antall Pers:<select>`;
 
-    const selectedCakeTypeId = model.admin.orderInProgress.cakeTypeId;
+    const selectedCakeTypeId = model.orderInProgress.cakeTypeId;
     // const selectedCakeTypeObj = model.cakeTypes.filter(ct => ct.id == selectedCakeTypeId)[0];
     // const cakeSizeIds = selectedCakeTypeObj.cakeSize;
     // const cakeSizes = model.cakeSizes.filter(cs => cakeSizeIds.includes(cs.id));
@@ -88,7 +88,7 @@ function Cakeloops() {
     // const cakeSizes = filterListById(selectedCakeTypeObj.cakeSize, model.cakeSizes);
 
     const cakeSizes = filteredListBasedOnIdAndOtherList(
-        model.admin.orderInProgress.cakeTypeId,
+        model.orderInProgress.cakeTypeId,
         model.cakeTypes, 'cakeSize', model.cakeSizes);
 
     for (sizes of cakeSizes) {
