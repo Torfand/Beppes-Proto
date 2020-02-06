@@ -71,14 +71,27 @@ function AddOrder() {
 
 function Cakeloops() {
     html += `<div class="foodForm">
-        Kaketype:<select id="cakeSelector">`;
-    for (cakes of model.cakeTypes) {
-        html += `
-         <option>${cakes.name}</option>`;
+        Kaketype:<select id="cakeSelector" oninput="model.admin.orderInProgress.cakeTypeId = this.value; AddOrder()">`;
+    for (cakeType of model.cakeTypes) {
+        const selected = model.admin.orderInProgress.cakeTypeId == cakeType.id ? 'selected' : '';
+        html += `<option ${selected} value="${cakeType.id}">${cakeType.name}</option>`;
     }
     html += `</select>`;
     html += `Antall Pers:<select>`;
-    for (sizes of model.cakeSize) {
+
+    const selectedCakeTypeId = model.admin.orderInProgress.cakeTypeId;
+    // const selectedCakeTypeObj = model.cakeTypes.filter(ct => ct.id == selectedCakeTypeId)[0];
+    // const cakeSizeIds = selectedCakeTypeObj.cakeSize;
+    // const cakeSizes = model.cakeSizes.filter(cs => cakeSizeIds.includes(cs.id));
+
+    // const selectedCakeTypeObj = getObjectFromId(model.admin.orderInProgress.cakeTypeId, model.cakeTypes);
+    // const cakeSizes = filterListById(selectedCakeTypeObj.cakeSize, model.cakeSizes);
+
+    const cakeSizes = filteredListBasedOnIdAndOtherList(
+        model.admin.orderInProgress.cakeTypeId,
+        model.cakeTypes, 'cakeSize', model.cakeSizes);
+
+    for (sizes of cakeSizes) {
         html += `<option>${sizes.size}</option>`;
     }
     html += `</select>`;
@@ -88,6 +101,19 @@ function Cakeloops() {
     }
     html += `</select>`;
     RestOfForm();
+}
+
+function filteredListBasedOnIdAndOtherList(id, listToLookupIdIn, fieldName, listToBeFiltered) {
+    const obj = getObjectFromId(id, listToLookupIdIn);
+    return filterListById(obj[fieldName], listToBeFiltered);
+}
+
+function getObjectFromId(id, list) {
+    return list.filter(e => e.id == id)[0];
+}
+
+function filterListById(listOfIds, listOfObjects) {
+    return listOfObjects.filter(e => listOfIds.includes(e.id));
 }
 
 function RestOfForm() {
@@ -105,7 +131,7 @@ function RestOfForm() {
      </br>
      </hr>
     <div class="finishOrder">
-    Totalbeløp: <div>${model.cakeSize[0].BasePrice}.-</div>
+    Totalbeløp: <div>${model.cakeSizes[0].BasePrice}.-</div>
     Betale i kasse: <button onclick=""></button>
     Til Fakturering: <button onclick=""></button>
     </div>`;

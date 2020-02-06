@@ -2,6 +2,8 @@ const model = {
 
     // NO CHANGES!!!!!
 
+    
+
     cakeTypes: [
         { id: 1, name: 'Bløtekake Rund Med Marsipan', cakeFillings: [1], cakeBase: [1], addOns: [1], cakeSize: [1] },
         { id: 3, name: 'Sjokoladekake Standard', addOns: [1, 2], cakeSize: [2], cakePrice: [2] },
@@ -18,7 +20,7 @@ const model = {
         { id: 2, name: 'Oreokrem', price: 98, },
     ],
 
-    cakeSize: [
+    cakeSizes: [
         { id: 1, size: '10 - 12 Pers', BasePrice: 595 },
         { id: 2, size: '10 Pers', BasePrice: 595 },
 
@@ -87,7 +89,9 @@ const model = {
             },
 
         ],
-
+        orderInProgress: {
+            cakeTypeId: 1
+        },
         commonTasks: [
             { taskName: 'Bestille varer fra Asko', isDone: false, taskStartedby: 'Tom Erik', finishTime: '' },
             { taskName: 'Rengjøre ovn og espresso maskin', isDone: true, taskStartedby: '', finishTime: '' },
