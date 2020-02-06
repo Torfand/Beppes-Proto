@@ -1,9 +1,9 @@
 body {
-    background-color: aqua;
+    background-color: #3b5998;
     background-size: 100vw 100vh;
 }
 
-.parent {
+.outputDiv {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(12, 1fr);
@@ -11,25 +11,31 @@ body {
     grid-row-gap: 0px;
 }
 
-.div1 {
-    grid-area: 4 / 6 / 11 / 8;
+.Header {
+    grid-area: 4 / 4 / 10 / 10;
 }
 
-.div2 {
-    grid-area: 1 / 11 / 2 / 13;
+.logoutButton {
+    grid-area: 1 / 12 / 2 / 13;
 }
 
-.div3 {
+.backButton {
     grid-area: 2 / 6 / 3 / 8;
 }
 
+.htmlCode {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
 .menuButtons {
+    background-color: linen;
     height: 100px;
     width: 250px;
     margin: 10px;
 }
 
 .logoutButton {
+    background-color: linen;
     height: 70px;
     width: 150px;
 }

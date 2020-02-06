@@ -5,8 +5,8 @@ const model = {
 
 
     cakeTypes: [
-        { id: 1, name: 'Rund Bløtkake Med Marsipan', cakeFillings: [1], cakeBase: [1], addOns: [1], cakeSize: [1] },
-        { id: 3, name: 'Sjokoladekake Standard', addOns: [1, 2], cakeSize: [2], cakePrice: [2] },
+        { id: 1, name: 'Rund Bløtkake Med Marsipan', cakeFillings: [1], cakeBase: [1], cakeAddOns: [1], cakeSizes: [1] },
+        { id: 2, name: 'Sjokoladekake Standard', cakeAddOns: [1, 2], cakeSizes: [2], cakePrice: [2] },
     ],
 
 
@@ -15,7 +15,7 @@ const model = {
 
     ],
 
-    addOns: [
+    cakeAddOns: [
         { id: 1, name: 'Vanilje Krem', price: 75, },
         { id: 2, name: 'Oreokrem', price: 98, },
     ],
@@ -34,7 +34,9 @@ const model = {
     ],
 
     orderInProgress: {
-        cakeTypeId: 1
+        cakeTypeId: 1,
+        cakeSizeId: 1,
+        cakeAddonId: 1
     },
 
 

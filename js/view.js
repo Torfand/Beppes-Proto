@@ -1,15 +1,15 @@
 let html;
-const backHTML = `<button onclick="OrdersMainMenu()" class="div4 backButton">Back</button> `
-
+const backtoOrdersHTML = `<button onclick="OrdersMainMenu()" class="htmlCode backButton">Back</button> `
+const backtoMainHTML = `<button onclick="updateView()" class="htmlCode backButton">Back</button> `
 
 html = '';
 
 function updateView() {
     html = '';
     html += `
-    <button class="div2 logoutButton">Logg ut</button>
-    <h2 class="div3">Admin</h2>
-    <div class="div1">
+    <button class="logoutButton logoutButton">Logg ut</button>
+    <h2 class="backButton">Admin</h2>
+    <div class="Header">
     `;
 
     for (button of model.admin.menuItems) {
@@ -20,17 +20,17 @@ function updateView() {
 
     }
     html += `</div>`;
-    output.innerHTML = backHTML + html;
+    output.innerHTML = html;
 }
 
 
 function OrdersMainMenu() {
     html = '';
     html += `
-    <button onclick="updateView()" class="div4 backButton">Back</button>
-    <button class="div2 logoutButton">Logg ut</button>
-    <h2 class="div3">ADMIN</h2>
-    <div class="div1">
+    <button onclick="updateView()" class="htmlCode backButton">Back</button>
+    <button class="logoutButton logoutButton">Logg ut</button>
+    <h2 class="backButton">Admin</h2>
+    <div class="Header">
     `;
 
 
@@ -48,11 +48,12 @@ function OrdersMainMenu() {
 
 function Calendar() {
     html = '';
-    output.innerHTML = backHTML + html;
+    output.innerHTML = backtoOrdersHTML + html;
 }
 
 function AddOrder() {
     html = '';
+
     html += `
 
      <div class="orderForm">
@@ -65,10 +66,20 @@ function AddOrder() {
      </div>
      </br>
      </hr>`;
-    Cakeloops();
+    writeOrderForms();
+    output.innerHTML = backtoOrdersHTML + html;
+
+
 }
 
-function Cakeloops() {
+function writeOrderForms() {
+    cakeTypes();
+    cakeSizes();
+    cakeAddons();
+    RestOfForm();
+}
+
+function cakeTypes() {
     html += `<div class="foodForm">
         Kaketype:<select id="cakeSelector" oninput="model.orderInProgress.cakeTypeId = this.value; AddOrder()">`;
     for (cakeType of model.cakeTypes) {
@@ -76,31 +87,34 @@ function Cakeloops() {
         html += `<option ${selected} value="${cakeType.id}">${cakeType.name}</option>`;
     }
     html += `</select>`;
+}
+
+function cakeSizes() {
     html += `Antall Pers:<select>`;
-
-    const selectedCakeTypeId = model.orderInProgress.cakeTypeId;
-    // const selectedCakeTypeObj = model.cakeTypes.filter(ct => ct.id == selectedCakeTypeId)[0];
-    // const cakeSizeIds = selectedCakeTypeObj.cakeSize;
-    // const cakeSizes = model.cakeSizes.filter(cs => cakeSizeIds.includes(cs.id));
-
-    // const selectedCakeTypeObj = getObjectFromId(model.admin.orderInProgress.cakeTypeId, model.cakeTypes);
-    // const cakeSizes = filterListById(selectedCakeTypeObj.cakeSize, model.cakeSizes);
-
     const cakeSizes = filteredListBasedOnIdAndOtherList(
         model.orderInProgress.cakeTypeId,
-        model.cakeTypes, 'cakeSize', model.cakeSizes);
-
-    for (sizes of cakeSizes) {
-        html += `<option>${sizes.size}</option>`;
+        model.cakeTypes, 'cakeSizes', model.cakeSizes);
+    for (cakeSize of cakeSizes) {
+        html += `<option>${cakeSize.size}</option>`;
     }
     html += `</select>`;
-    html += `Tillegg: <select>`;
-    for (addon of model.addOns) {
-        html += `<option>${addon.name}</option>`;
-    }
-    html += `</select>`;
-    RestOfForm();
 }
+
+function cakeAddons() {
+
+    html += `Tillegg: <select>`;
+
+    const cakeAddOns = filteredListBasedOnIdAndOtherList(
+        model.orderInProgress.cakeTypeId,
+        model.cakeTypes, 'cakeAddOns', model.cakeAddOns);
+    for (cakeAddon of cakeAddOns) {
+        html += `<option>${cakeAddon.name}</option>`;
+    }
+    html += `</select>`;
+
+}
+
+
 
 function filteredListBasedOnIdAndOtherList(id, listToLookupIdIn, fieldName, listToBeFiltered) {
     const obj = getObjectFromId(id, listToLookupIdIn);
@@ -134,14 +148,14 @@ function RestOfForm() {
     Betale i kasse: <button onclick=""></button>
     Til Fakturering: <button onclick=""></button>
     </div>`;
-    output.innerHTML = backHTML + html;
+    output.innerHTML = backtoOrdersHTML + html;
 }
 
 function Billing() {
     html = ''
     html += `
-        <h1 class="div3">Til Fakturering</h1>
-        <div class="div1">`
+        <h1 class="backButton">Til Fakturering</h1>
+        <div class="Header">`
     for (bills of model.admin.orders) {
         if (bills.toBilling == true) {
             html += ` ${bills.name}  ${bills.cakeType}   ${bills.deliveryTime}
@@ -160,7 +174,7 @@ function Billing() {
 function ApprovedOrders() {
     html = '';
     html += ` 
-    <h1 class="div3">Godkjente Bestillinger</h1> <div class="div1">`
+    <h1 class="backButton">Godkjente Bestillinger</h1> <div class="Header">`
     for (bills of model.admin.orders) {
         if (bills.isApproved == true) {
             html += `${bills.name} ${bills.cakeType} ${bills.deliveryTime}
@@ -174,16 +188,16 @@ function ApprovedOrders() {
 function CanceledOrders() {
     html = '';
     html += `
-    <h1 class="div3">Kanselerte Bestillinger</h1> <div class="div1">`
+    <h1 class="backButton">Kanselerte Bestillinger</h1> <div class="Header">`
     for (bills of model.admin.orders) {
         if (bills.isCanceled == true) {
             html += `${bills.name} ${bills.cakeType} ${bills.deliveryTime}
             <button> Se ordre </button>`
         } else {
             html = `
-            <div class="div1"> Ingen Ordre er Kanselerte </div>`
+            <div class="Header"> Ingen Ordre er Kanselerte </div>`
         }
 
+        output.innerHTML = backtoOrdersHTML + html;
     }
-    output.innerHTML = backHTML + html;
 }
