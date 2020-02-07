@@ -57,7 +57,7 @@ function Calendar() {
     }
     html += `</tr>`
     html += `<tr>`
-    for (month of model.admin.calendar) {
+    for (month of model.admin.calendarMonths) {
 
         for (let i = 1; i <= month.February; i++) {
             html += `
@@ -89,8 +89,6 @@ function AddOrder() {
      </hr>`;
     writeOrderForms();
     output.innerHTML = backtoOrdersHTML + html;
-
-
 }
 
 function writeOrderForms() {
@@ -131,8 +129,7 @@ function cakeAddons() {
     for (cakeAddon of cakeAddOns) {
         html += `<option>${cakeAddon.name}</option>`;
     }
-    html += `</select>`;
-
+   html += `</select>`;
 }
 
 
