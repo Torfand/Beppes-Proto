@@ -158,11 +158,11 @@ function RestOfForm() {
     Dato: <input type="text" id="deliveryDate" value="Leverings dato her"></input>
     Tidspunkt: <input id="timeOfDelivery" type="text" value="Hente/leveringstidspunkt"></input>
     Faktura nummer: <input id="invoiceNumber" type="text" value="Faktura nummer her"></input>
-     </div>
+   
      </br>
      </hr>
-    <div class="finishOrder">
-    Totalbeløp: <div>${model.cakeSizes[0].BasePrice}.-</div>
+ 
+    Totalbeløp: ${model.cakeSizes[0].BasePrice}.-
     Betale i kasse: <button onclick=""></button>
     Til Fakturering: <button onclick=""></button>
     </div>`;
@@ -172,7 +172,9 @@ function RestOfForm() {
 function Billing() {
     html = ''
     html += `
-    <div class="Header"><h1>Bestillinger</h1>`
+    <div class="content">
+    <h1 class="Header">Til Faktura</h1>
+    `
     for (bills of model.admin.orders) {
         if (bills.toBilling == true) {
             html += ` ${bills.name}  ${bills.cakeType}   ${bills.deliveryTime}
@@ -191,7 +193,7 @@ function Billing() {
 function ApprovedOrders() {
     html = '';
     html += ` 
-    <div class="Header"><h1>Godkjente Bestillinger</h1>`;
+    <div class="content"><h1>Godkjente Bestillinger</h1>`;
     for (bills of model.admin.orders) {
         if (bills.isApproved == true) {
             html += `${bills.name} ${bills.cakeType} ${bills.deliveryTime}
@@ -205,14 +207,14 @@ function ApprovedOrders() {
 function CanceledOrders() {
     html = '';
     html += `
-     <div class="Header"><h1>Kanselerte Bestillinger</h1>`;
+     <div class="content"><h1>Kanselerte Bestillinger</h1>`;
     for (bills of model.admin.orders) {
         if (bills.isCanceled == true) {
             html += `${bills.name} ${bills.cakeType} ${bills.deliveryTime}
             <button> Se ordre </button>`
         } else {
             html = `
-            <div class="Header"> Ingen Ordre er Kanselerte </div>`;
+            <div class="content"> <h1 class="Header">Ingen Ordre er Kanselerte</h1></div>`;
         }
 
         output.innerHTML = backtoOrdersHTML + html;
