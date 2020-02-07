@@ -1,41 +1,50 @@
-body {
-    background-color: #3b5998;
-    background-size: 100vw 100vh;
-}
-
-.outputDiv {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(12, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-}
-
-.Header {
-    grid-area: 4 / 4 / 10 / 10;
-}
-
-.logoutButton {
-    grid-area: 1 / 12 / 2 / 13;
-}
-
-.backButton {
-    grid-area: 2 / 6 / 3 / 8;
-}
-
-.htmlCode {
-    grid-area: 1 / 1 / 2 / 2;
-}
-
-.menuButtons {
-    background-color: linen;
-    height: 100px;
-    width: 250px;
-    margin: 10px;
-}
-
-.logoutButton {
-    background-color: linen;
-    height: 70px;
-    width: 150px;
-}
+        body {
+            background-color: #3b5998;
+            background-size: 100vw 100vh;
+        }
+        
+        .parent {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(12, 1fr);
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            justify-items: stretch;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        .backBtn {
+            grid-area: 1 / 1 / 2 / 2;
+            height: 50px;
+            width: 100px;
+        }
+        
+        .logOutbtn {
+            grid-area: 1 / 12 / 2 / 13;
+            height: 50px;
+            width: 100px;
+        }
+        
+        .menuButtons {
+            grid-area: 5 / 5 / 9 / 9;
+        }
+        
+        .content {
+            grid-area: 1 / 2 / 13 / 12;
+        }
+        
+        .Header {
+            grid-area: 1 / 5 / 2 / 9;
+        }
+        
+        .calendar {
+            border: solid 1px black;
+            float: left;
+            text-align: center;
+            font-size: 18px;
+            width: 13vw;
+            height: 13vh;
+            background-color: grey;
+            background-size: 100vw 100vh;
+        }

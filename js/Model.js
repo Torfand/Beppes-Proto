@@ -56,12 +56,27 @@ const model = {
         ],
 
 
-        calendarItems: [{
-            months: ['Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Desember'],
-            day: ['Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag', 'Søndag'],
-            daysInMonths: { January: 31, February: 28, March: 31, April: 30, May: 31, June: 30, July: 31, August: 31, September: 30, October: 31, November: 30, December: 31, },
-            Notes: [''],
-        }],
+        calendar: [
+            { February: 28, },
+        ],
+
+        calendarDay: [
+            { days: 'Monday' }
+        ],
+
+
+
+
+
+
+
+
+        // calendarItems: [{
+        //     months: ['Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Desember'],
+        //     day: ['Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag', 'Søndag'],
+        //     daysInMonths: [{ January: 31, February: 28, March: 31, April: 30, May: 31, June: 30, July: 31, August: 31, September: 30, October: 31, November: 30, December: 31, }],
+        //     Notes: [''],
+        // }],
 
 
 

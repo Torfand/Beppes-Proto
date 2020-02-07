@@ -1,15 +1,15 @@
 let html;
-const backtoOrdersHTML = `<button onclick="OrdersMainMenu()" class="htmlCode backButton">Back</button> `
-const backtoMainHTML = `<button onclick="updateView()" class="htmlCode backButton">Back</button> `
+const backtoOrdersHTML = `<button onclick="OrdersMainMenu()" class="backBtn">Back</button> `
+const backtoMainHTML = `<button onclick="updateView()" class="backBtn">Back</button> `
 
 html = '';
 
 function updateView() {
     html = '';
     html += `
-    <button class="logoutButton logoutButton">Logg ut</button>
-    <h2 class="backButton">Admin</h2>
-    <div class="Header">
+    <button class="logOutbtn">Logg ut</button>
+    <h2 class="Header">Admin</h2> <div class="menuButtons">
+    
     `;
 
     for (button of model.admin.menuItems) {
@@ -19,26 +19,25 @@ function updateView() {
         `
 
     }
-    html += `</div>`;
+    html += `</div>`
     output.innerHTML = html;
 }
 
 
 function OrdersMainMenu() {
     html = '';
-    html += `
-    <button onclick="updateView()" class="htmlCode backButton">Back</button>
-    <button class="logoutButton logoutButton">Logg ut</button>
-    <h2 class="backButton">Admin</h2>
-    <div class="Header">
+    html += ` <button onclick = "updateView()"class = "backBtn"> Back </button> 
+    <button class = "logoutButton logOutbtn"> Logg ut </button> 
+    <h2 class = "Header"> Admin </h2>
+    <div class="menuButtons">
     `;
 
 
     for (button of model.admin.orderMenuItems) {
         html +=
-            `<button onclick="${button.createFunction}()" class="menuButtons">${button.buttonName}</button>`
+            ` <button onclick="${button.createFunction}()"class="menuButtons"> ${button.buttonName} </button>`
     }
-    html += `</div>`;
+    html += `</div>`
     output.innerHTML = html;
 
 }
@@ -48,7 +47,23 @@ function OrdersMainMenu() {
 
 function Calendar() {
     html = '';
-    output.innerHTML = backtoOrdersHTML + html;
+    html = `<div class="content"> <table>`
+  
+    for (dayname of model.admin.calendarDay) {
+        for(let j = 0; j <= dayname.days; j++)
+        html += `<tr>
+                    <th>${dayname.day}</th>`
+
+    }
+    // for (month of model.admin.calendar) {
+    //     for (let i = 1; i <= month.February; i++) {
+
+    //         html += `
+    //                 <div class="calendar">${i}</div>`;
+    //     }
+    //     html += `</div>`;
+    // }
+    output.innerHTML = backtoMainHTML + html;
 }
 
 function AddOrder() {
@@ -56,14 +71,14 @@ function AddOrder() {
 
     html += `
 
-     <div class="orderForm">
+     <div class="content">
      Navn: <input id="name" type="text" value="Navn her"</input>
      Firma: <input id="firm" type="text" value="Firma her"</input>   
      Kontakt Person: <input id="contact" type="text" value="Navn på Kontaktperson"></input> 
      Telefon Nummer: <input id="number" type="text" value="Tlf her"></input>
      Epost: <input id="mail" type="text" value="Epost her"></input>
      Id-Nummer: <input id="idNumber" type ="text" value="Id Nummer her"></input>
-     </div>
+     
      </br>
      </hr>`;
     writeOrderForms();
@@ -80,7 +95,7 @@ function writeOrderForms() {
 }
 
 function cakeTypes() {
-    html += `<div class="foodForm">
+    html += `
         Kaketype:<select id="cakeSelector" oninput="model.orderInProgress.cakeTypeId = this.value; AddOrder()">`;
     for (cakeType of model.cakeTypes) {
         const selected = model.orderInProgress.cakeTypeId == cakeType.id ? 'selected' : '';
@@ -154,8 +169,7 @@ function RestOfForm() {
 function Billing() {
     html = ''
     html += `
-        <h1 class="backButton">Til Fakturering</h1>
-        <div class="Header">`
+    <div class="Header"><h1>Bestillinger</h1>`
     for (bills of model.admin.orders) {
         if (bills.toBilling == true) {
             html += ` ${bills.name}  ${bills.cakeType}   ${bills.deliveryTime}
@@ -168,34 +182,34 @@ function Billing() {
         }
     }
     html += `</div>`;
-    output.innerHTML = backHTML + html;
+    output.innerHTML = backtoOrdersHTML + html;
 }
 
 function ApprovedOrders() {
     html = '';
     html += ` 
-    <h1 class="backButton">Godkjente Bestillinger</h1> <div class="Header">`
+    <div class="Header"><h1>Godkjente Bestillinger</h1>`;
     for (bills of model.admin.orders) {
         if (bills.isApproved == true) {
             html += `${bills.name} ${bills.cakeType} ${bills.deliveryTime}
              <button> Se ordre </button>`
         }
     }
-    output.innerHTML = backHTML + html;
+    output.innerHTML = backtoOrdersHTML + html;
 }
 
 
 function CanceledOrders() {
     html = '';
     html += `
-    <h1 class="backButton">Kanselerte Bestillinger</h1> <div class="Header">`
+     <div class="Header"><h1>Kanselerte Bestillinger</h1>`;
     for (bills of model.admin.orders) {
         if (bills.isCanceled == true) {
             html += `${bills.name} ${bills.cakeType} ${bills.deliveryTime}
             <button> Se ordre </button>`
         } else {
             html = `
-            <div class="Header"> Ingen Ordre er Kanselerte </div>`
+            <div class="Header"> Ingen Ordre er Kanselerte </div>`;
         }
 
         output.innerHTML = backtoOrdersHTML + html;
