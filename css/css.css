@@ -2,7 +2,37 @@
             background-color: #3b5998;
             background-size: 100vw 100vh;
         }
-        
+        /* Table style stjelt fra TODO - Kun for testing!! */
+        table,
+        tr,
+        td,
+        th {
+            border: 1px solid gray;
+            border-collapse: collapse;
+
+        }
+
+
+        td,
+        th {
+            padding: 4px;
+
+        }
+
+        th {
+            background-color: crimson;
+            border: 1px solid gray;
+            color: whitesmoke;
+        }
+
+        tr:nth-child(even) {
+            background-color: teal;
+            color: white;
+
+
+
+        }
+        /* Slutt på table style */
         .parent {
             display: grid;
             grid-template-columns: repeat(12, 1fr);

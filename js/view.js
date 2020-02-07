@@ -47,22 +47,26 @@ function OrdersMainMenu() {
 
 function Calendar() {
     html = '';
-    html = `<div class="content"> <table>`
-  
-    for (dayname of model.admin.calendarDay) {
-        for(let j = 0; j <= dayname.days; j++)
-        html += `<tr>
-                    <th>${dayname.day}</th>`
+    html = `<div class="content"> <table class="calendar">
+    <tr>`
 
+    for (day of model.admin.calendarDays) {
+
+        html += `
+                <th>${day.day}</th>`
     }
-    // for (month of model.admin.calendar) {
-    //     for (let i = 1; i <= month.February; i++) {
+    html += `</tr>`
+    html += `<tr>`
+    for (month of model.admin.calendar) {
 
-    //         html += `
-    //                 <div class="calendar">${i}</div>`;
-    //     }
-    //     html += `</div>`;
-    // }
+        for (let i = 1; i <= month.February; i++) {
+//Trenger nok en Modulo operator her for at den skal lag en ny Row per 7nde dag, ekke helt sikker på hvordan enda, må vell spørre 
+            html += `
+                    <td>${i}</td>`;
+        }
+    }
+    html += `</tr></table>`;
+
     output.innerHTML = backtoMainHTML + html;
 }
 

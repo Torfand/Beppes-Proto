@@ -60,8 +60,14 @@ const model = {
             { February: 28, },
         ],
 
-        calendarDay: [
-            { days: 'Monday' }
+        calendarDays: [
+            { day: 'Mandag' },
+            { day: 'Tirsdag' },
+            { day: 'Onsdag' },
+            { day: 'Torsdag' },
+            { day: 'Fredag' },
+            { day: 'Lørdag' },
+            { day: 'Søndag' }
         ],
 
 
