@@ -2,37 +2,43 @@
             background-color: #3b5998;
             background-size: 100vw 100vh;
         }
+
         /* Table style stjelt fra TODO - Kun for testing!! */
-        table,
-        tr,
-        td,
-        th {
-            border: 1px solid gray;
+
+        table, tr, td {
+            border: 1px solid black;
             border-collapse: collapse;
-
+            text-align: center;
+            align-self: auto;
+            margin: auto;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+           
+          
+            
+            
         }
-
-
-        td,
-        th {
+        
+        td, th {
             padding: 4px;
-
         }
 
         th {
             background-color: crimson;
-            border: 1px solid gray;
+            padding: 8px;
             color: whitesmoke;
         }
 
-        tr:nth-child(even) {
-            background-color: teal;
-            color: white;
-
-
-
+        tr {
+            background-color: darkgrey;
         }
-        /* Slutt på table style */
+
+        tr:nth-child(even) {
+            background-color: gray;
+            color: whitesmoke;
+        }
+
+        /* Slutt på  Kopiert table style */
+
         .parent {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -43,38 +49,29 @@
             width: 100vw;
             height: 100vh;
         }
-        
+
         .backBtn {
             grid-area: 1 / 1 / 2 / 2;
             height: 50px;
             width: 100px;
         }
-        
+
         .logOutbtn {
             grid-area: 1 / 12 / 2 / 13;
             height: 50px;
             width: 100px;
         }
-        
+
         .menuButtons {
             grid-area: 5 / 5 / 9 / 9;
         }
-        
+
         .content {
             grid-area: 1 / 2 / 13 / 12;
         }
-        
+
         .Header {
             grid-area: 1 / 5 / 2 / 9;
         }
-        
-        .calendar {
-            border: solid 1px black;
-            float: left;
-            text-align: center;
-            font-size: 18px;
-            width: 13vw;
-            height: 13vh;
-            background-color: grey;
-            background-size: 100vw 100vh;
-        }
+
+      

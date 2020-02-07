@@ -60,9 +60,11 @@ function Calendar() {
     for (month of model.admin.calendar) {
 
         for (let i = 1; i <= month.February; i++) {
-//Trenger nok en Modulo operator her for at den skal lag en ny Row per 7nde dag, ekke helt sikker på hvordan enda, må vell spørre 
             html += `
                     <td>${i}</td>`;
+            if (i % 7 == 0) {
+                html += `</tr>`
+            }
         }
     }
     html += `</tr></table>`;
