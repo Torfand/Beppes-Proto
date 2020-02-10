@@ -71,22 +71,6 @@ const model = {
         ],
 
 
-
-
-
-
-
-
-        // calendarItems: [{
-        //     months: ['Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Desember'],
-        //     day: ['Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag', 'Søndag'],
-        //     daysInMonths: [{ January: 31, February: 28, March: 31, April: 30, May: 31, June: 30, July: 31, August: 31, September: 30, October: 31, November: 30, December: 31, }],
-        //     Notes: [''],
-        // }],
-
-
-
-
         orders: [{
             id: 0,
             name: 'Ola Nordmann',
@@ -102,7 +86,7 @@ const model = {
             note: 'vil ha et fjell med kake',
             invoiceNR: '123123123123',
             delivery: false,
-            deliveryDate: '',
+            deliveryDate: '|',
             deliveryTime: '',
             toBilling: false,
             isApproved: true,

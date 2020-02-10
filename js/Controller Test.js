@@ -2,6 +2,23 @@
 
 function pushOrder() {
 
+    let { cakeType, name, firm, contact, phoneNr, email, idNR, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved } = formValues()
+    let id = 0
+    for (let i = 0; i <= model.admin.orders.length; i++) {
+        id = i
+    }
+    //botch
+    if (cakeType == 1) {
+        cakeType = 'Rund Bløtkake Med Marsipan'
+    }
+    else if (cakeType == 2) {
+        cakeType = 'Sjokoladekake Standard'
+    }
+    //
+    model.admin.orders.push({ id, name, firm, contact, phoneNr, email, idNR, cakeType, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved })
+}
+
+function formValues() {
     let name = document.getElementById("name").value
     let firm = document.getElementById("firm").value
     let contact = document.getElementById("contact").value
@@ -21,20 +38,9 @@ function pushOrder() {
     let invoiceNR = document.getElementById("invoiceNumber").value
     let toBilling = document.getElementById("toBilling").checked
     let isApproved = false
-    let id = 0
-    for (let i = 0; i <= model.admin.orders.length; i++) {
-        id = i
-    }
-    //botch
-    if (cakeType == 1) {
-        cakeType = 'Rund Bløtkake Med Marsipan'
-    }
-    else if (cakeType == 2) {
-        cakeType = 'Sjokoladekake Standard'
-    }
-    //
-    model.admin.orders.push({ id, name, firm, contact, phoneNr, email, idNR, cakeType, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved })
+    return { cakeType, name, firm, contact, phoneNr, email, idNR, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved }
 }
+
 function approveOrder(orderID) {
 
 
