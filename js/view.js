@@ -109,7 +109,7 @@ function cakeTypes() {
 }
 
 function cakeSizes() {
-    html += `Antall Pers:<select>`;
+    html += `Antall Pers:<select id="size">`;
     const cakeSizes = filteredListBasedOnIdAndOtherList(
         model.orderInProgress.cakeTypeId,
         model.cakeTypes, 'cakeSizes', model.cakeSizes);
@@ -121,7 +121,7 @@ function cakeSizes() {
 
 function cakeAddons() {
 
-    html += `Tillegg: <select>`;
+    html += `Tillegg: <select id="addon">`;
 
     const cakeAddOns = filteredListBasedOnIdAndOtherList(
         model.orderInProgress.cakeTypeId,
@@ -149,10 +149,10 @@ function filterListById(listOfIds, listOfObjects) {
 
 function RestOfForm() {
     html += ` </br>
-    Med marsipan: <input type="checkbox"></input> </br>
-    Uten marsipan: <input type="checkbox"></input> </br>
-    Notat: <input id="note" type="text" value="Notat til oss her"></input>
-    Hentes: <input type="checkbox"></input> </br>
+    Med marsipan: <input type="checkbox" id="withMarsipan"></input> </br>
+    Uten marsipan: <input type="checkbox" ide="woMarsipan"></input> </br>
+    Notat: <input id="notes" type="text" value="Notat til oss her"></input>
+    Hentes: <input type="checkbox" id="delivery"></input> </br>
     Leveres: <input type="checkbox"></input> </br>
     Leverings Adresse: <input id="deliveryAdress" type="text" value="Adresse her"></input>
     Dato: <input type="text" id="deliveryDate" value="Leverings dato her"></input>
@@ -177,7 +177,7 @@ function Billing() {
     `
     for (bills of model.admin.orders) {
         if (bills.toBilling == true) {
-            html += ` ${bills.name}  ${bills.cakeType}   ${bills.deliveryTime}
+            html += ` ${bills.name}  ${bills.cakeType}   ${bills.deliveryDate} ${bills.deliveryTime}
             <button>Se Ordre</button>  <button>Godkjenn</button>
                                    `
             if (bills.delivery == true) {
@@ -196,7 +196,7 @@ function ApprovedOrders() {
     <div class="content"><h1>Godkjente Bestillinger</h1>`;
     for (bills of model.admin.orders) {
         if (bills.isApproved == true) {
-            html += `${bills.name} ${bills.cakeType} ${bills.deliveryTime}
+            html += `${bills.name} ${bills.cakeType} ${bills.deliveryDate} ${bills.deliveryTime}
              <button> Se ordre </button>`
         }
     }
@@ -210,7 +210,7 @@ function CanceledOrders() {
      <div class="content"><h1>Kanselerte Bestillinger</h1>`;
     for (bills of model.admin.orders) {
         if (bills.isCanceled == true) {
-            html += `${bills.name} ${bills.cakeType} ${bills.deliveryTime}
+            html += `${bills.name} ${bills.cakeType} ${bills.deliveryDate} ${bills.deliveryTime}
             <button> Se ordre </button>`
         } else {
             html = `

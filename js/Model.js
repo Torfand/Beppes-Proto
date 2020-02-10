@@ -22,7 +22,7 @@ const model = {
 
     cakeSizes: [
         { id: 1, size: '10 - 12 Pers', BasePrice: 595 },
-        { id: 2, size: '10 Pers', BasePrice: 595 },
+        { id: 2, size: '10 4', BasePrice: 595 },
 
     ],
 
@@ -90,7 +90,15 @@ const model = {
         orders: [{
                 name: 'Ola Nordmann',
                 cakeType: 'Bløtekake',
+                size: '10 - 12 Pers',
+                addon: '',
+                note:'',
+                firm:'',
+                contact:'',
+                email:'',
+                adress: '',
                 delivery: false,
+                deliveryDate: '',
                 deliveryTime: '',
                 toBilling: true,
                 isApproved: true,
@@ -99,7 +107,15 @@ const model = {
             {
                 name: 'Kari Nordmann',
                 cakeType: 'Sjokoladekake',
+                size: '10 Pers', 
+                addon: '',
+                note:'',
+                firm:'',
+                contact:'',
+                email:'',
+                adress: '',
                 delivery: true,
+                deliveryDate: '',
                 deliveryTime: '12:45',
                 toBilling: false,
                 isApproved: false,
@@ -108,7 +124,15 @@ const model = {
             {
                 name: 'Brødulf',
                 cakeType: 'Sjokoladekake',
+                size: '10 Pers',
+                addon: '',
+                note:'',
+                firm:'',
+                contact:'',
+                email:'',
+                adress: '',
                 delivery: false,
+                deliveryDate: '',
                 deliveryTime: '',
                 toBilling: false,
                 isApproved: false,

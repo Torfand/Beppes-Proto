@@ -21,6 +21,9 @@
         td, th {    
             padding: 4px;
         }
+        td {
+            padding: 50px;
+        }
 
         th {
             background-color: crimson;
