@@ -5,9 +5,9 @@ const model = {
 
 
     cakeTypes: [
-        { id: 1, name: 'Rund Bløtkake Med Marsipan', cakeFillings: [1, 2, 3, 5], cakeBases: [1], cakeAddOns: [1, 4, 5], cakeSizes: [1] },
-        { id: 2, name: 'Sjokoladekake Standard', cakeFillings: [4], cakeBases: [], cakeAddOns: [1, 2], cakeSizes: [2], cakePrice: [2] },
-        { id: 3, name: 'Raw kake', cakeFillings: [4, 5, 6, 7], cakeBases: [], cakeAddOns: [1, 3], cakeSizes: [2], cakePrice: [2] },
+        { id: 1, name: 'Rund Bløtkake Med Marsipan', cakeFillings: [1, 2, 3, 5], cakeBases: [1], cakeAddOns: [1, 4, 5], cakeSizes: [1], },
+        { id: 2, name: 'Sjokoladekake Standard', cakeFillings: [4], cakeBases: [2], cakeAddOns: [1, 2], cakeSizes: [2], cakePrice: [2,] },
+        { id: 3, name: 'Raw kake', cakeFillings: [4, 5, 6, 7], cakeBases: [6], cakeAddOns: [1, 3], cakeSizes: [2], cakePrice: [2] },
     ],
 
 
@@ -26,8 +26,8 @@ const model = {
         { id: 1, name: 'Vanilje Krem', price: 75, },
         { id: 2, name: 'Oreokrem', price: 98, },
         { id: 3, name: 'Jordbærkrem', price: 70, },
-        { id: 4, addon: 'Bilde', price: 220, },
-        { id: 5, addon: 'Text', price: 0, },
+        { id: 4, name: 'Bilde', price: 220, },
+        { id: 5, name: 'Text', price: 0, },
 
 
     ],
