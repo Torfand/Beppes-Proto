@@ -1,8 +1,6 @@
-
-
 function pushOrder() {
 
-    let { cakeType, name, firm, contact, phoneNr, email, idNR, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved } = formValues()
+    let { cakeType, name, firm, contact, phoneNr, email, idNR, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase } = formValues()
     let id = 0
     for (let i = 0; i <= model.admin.orders.length; i++) {
         id = i
@@ -10,12 +8,12 @@ function pushOrder() {
     //botch
     if (cakeType == 1) {
         cakeType = 'Rund Bløtkake Med Marsipan'
-    }
-    else if (cakeType == 2) {
+    } else if (cakeType == 2) {
         cakeType = 'Sjokoladekake Standard'
     }
     //
-    model.admin.orders.push({ id, name, firm, contact, phoneNr, email, idNR, cakeType, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved })
+    model.admin.orders.push({ id, name, firm, contact, phoneNr, email, idNR, cakeType, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase })
+    return alert('Ordre lagt til')
 }
 
 function formValues() {
@@ -26,7 +24,10 @@ function formValues() {
     let email = document.getElementById("mail").value
     let idNR = document.getElementById("idNumber").value
     let cakeType = document.getElementById('cakeSelector').value
+    let cakeFilling = document.getElementById('cakeFillingSelector').value
+    let cakeBase = document.getElementById('cakeBaseSelector').value
     let size = document.getElementById("size").value
+
     let addon = document.getElementById("addon").value
     let withMarsipan = document.getElementById("withMarsipan").checked
     let woMarsipan = document.getElementById("woMarsipan").checked
@@ -38,7 +39,7 @@ function formValues() {
     let invoiceNR = document.getElementById("invoiceNumber").value
     let toBilling = document.getElementById("toBilling").checked
     let isApproved = false
-    return { cakeType, name, firm, contact, phoneNr, email, idNR, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved }
+    return { cakeType, name, firm, contact, phoneNr, email, idNR, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase }
 }
 
 function approveOrder(orderID) {
@@ -49,10 +50,21 @@ function approveOrder(orderID) {
 
 
 }
+
 function cancelOrder(orderID) {
-    model.admin.orders[orderID].isCanceled = true;
-    model.admin.orders[orderID].toBilling = false;
-    model.admin.orders[orderID].isApproved = false;
+    let confirmCancelation = confirm('Er du sikker på at du vil kanselere denne ordren?')
+
+    if (confirmCancelation == true) {
+
+        model.admin.orders[orderID].isCanceled = true;
+        model.admin.orders[orderID].toBilling = false;
+        model.admin.orders[orderID].isApproved = false;
+
+    } else {
+        return;
+
+    }
+
 
 
 }
@@ -63,4 +75,3 @@ function toggleInspectMode(orderID) {
 
     inspectMode()
 }
-

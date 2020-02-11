@@ -96,6 +96,8 @@ function AddOrder() {
 
 function writeOrderForms() {
     cakeTypes();
+    cakeFillings();
+    cakeBases();
     cakeSizes();
     cakeAddons();
     RestOfForm();
@@ -111,8 +113,30 @@ function cakeTypes() {
     html += `</select>`;
 }
 
+function cakeFillings() {
+    html += `<br> Kakefyll:<select id="cakeFillingSelector">`;
+    const cakeFillings = filteredListBasedOnIdAndOtherList(
+        model.orderInProgress.cakeTypeId,
+        model.cakeTypes, 'cakeFillings', model.cakeFillings);
+    for (cakeFilling of cakeFillings) {
+        html += `<option>${cakeFilling.name}</option>`;
+    }
+    html += `</select>`;
+}
+
+function cakeBases() {
+    html += `<br> Kakebunn:<select id="cakeBaseSelector">`;
+    const cakeBases = filteredListBasedOnIdAndOtherList(
+        model.orderInProgress.cakeTypeId,
+        model.cakeTypes, 'cakeBases', model.cakeBases);
+    for (cakeBase of cakeBases) {
+        html += `<option>${cakeBase.name}</option>`;
+    }
+    html += `</select>`;
+}
+
 function cakeSizes() {
-    html += `Antall Pers:<select id="size">`;
+    html += `<br> Antall Pers:<select id="size">`;
     const cakeSizes = filteredListBasedOnIdAndOtherList(
         model.orderInProgress.cakeTypeId,
         model.cakeTypes, 'cakeSizes', model.cakeSizes);
@@ -124,7 +148,7 @@ function cakeSizes() {
 
 function cakeAddons() {
 
-    html += `Tillegg: <select id="addon">`;
+    html += `<br> Tillegg: <select id="addon">`;
 
     const cakeAddOns = filteredListBasedOnIdAndOtherList(
         model.orderInProgress.cakeTypeId,
@@ -170,7 +194,7 @@ function RestOfForm() {
     Betale i kasse: <input id="" type="checkbox"></input> </br>
     Til Fakturering: <input id="toBilling" type="checkbox"></input> </br>
     <br>
-    Send inn ordre : <button onclick="pushOrder()">Legg til Ordre</button>
+    Send inn ordre : <button onclick="pushOrder(), OrdersMainMenu() ">Legg til Ordre</button>
     </br>
     </div>`;
     output.innerHTML = backtoOrdersHTML + html;
@@ -178,39 +202,24 @@ function RestOfForm() {
 
 function Billing() {
     html = ''
-    html += `
-    
-    <h1 class="header">Til Faktura</h1>
-    `
+    html += `<h1 class="header">Til Faktura</h1>`
     for (bills of model.admin.orders) {
-
         if (bills.toBilling == true) {
             html += ` 
-            <div class="content">
-            
-            ${bills.name},
+            <div class="content"> 
+                      ${bills.name},
                       ${bills.cakeType},         
                       ${bills.deliveryDate}, 
                       ${bills.deliveryTime},
                       ${bills.size},
-                      ${bills.note},
-                 `
+                      ${bills.note},`
+            bills.delivery == true ? html += ` Skal Leveres,` : ''
 
-
-            if (bills.delivery == true) {
-                html += `Skal Leveres,`
-            }
 
 
             html += `<br>
-                       <button onclick="toggleInspectMode(${bills.id})">Se Ordre</button>  <button onclick="approveOrder(${bills.id})">Godkjenn</button>
-                       <br>
-                      
-                       `
-
-
-
-
+                       <button onclick="toggleInspectMode(${bills.id})">Se Ordre</button>  <button onclick="approveOrder(${bills.id}), Billing()">Godkjenn</button>
+                       <br>  `
         }
     }
     html += `</div>`;
@@ -220,16 +229,16 @@ function Billing() {
 function ApprovedOrders() {
     html = '';
     html += ` 
-    <div class="content" ><h1>Godkjente Bestillinger</h1>`;
+    <div class="content"><h1>Godkjente Bestillinger</h1>`;
     for (bills of model.admin.orders) {
         if (bills.isApproved == true) {
-            html += `${bills.name},
+            html +=
+                `${bills.name},
              ${bills.cakeType} ,
              ${bills.deliveryDate}, 
              ${bills.deliveryTime},
              <br>
              <button onclick="toggleInspectMode(${bills.id})">Se ordre</button>
-             <button  onclick="cancelOrder(${bills.id})">Kanseler Ordre</button>
               <br>  
              <hr>
              `;
@@ -252,7 +261,6 @@ function CanceledOrders() {
              <br>
             <button onclick="toggleInspectMode(${bills.id})">Se ordre</button> </br>`;
         }
-
     }
     html += `</div>`
     output.innerHTML = backtoOrdersHTML + html;
@@ -273,32 +281,22 @@ function inspectMode() {
             Kaketype: ${order.cakeType} <br>
             Kakestørrelse: ${order.size} <br>
             Tillegg: ${order.addon} <br>`
-
             order.withMarsipan == true ? order.withMarsipan = 'Ja' : order.withMarsipan = 'Nei';
-
             html += ` Marsipan?: ${order.withMarsipan} <br> `
-
-            if (order.delivery == true) {
+            if (order.delivery != true) {
+                order.delivery = 'Skal ikke leveres';
+            } else {
                 order.delivery = 'Skal Leveres'
                 html += `Levering?: ${order.delivery} <br> 
                          Tidspunkt for levering: ${order.deliveryTime}<br>`
-            } else {
-                order.delivery = 'Skal ikke leveres';
             }
-
             html += `
             Notat: ${order.note} <br>
             Id-nr : ${order.idNR} <br>
-            Faktura-Nummer : ${order.invoiceNR} <br>
-
-            <button onclick="cancelOrder(${order.id})"> Kanseler Ordre </button>
-          
-            `
+            Faktura-Nummer : ${order.invoiceNR} <br> `
+            order.isCanceled == false ? html += `<button onclick="cancelOrder(${order.id})"> Kanseler Ordre </button> ` : html += ''
         }
-
     }
-
     html += `</div>`
-
     output.innerHTML = backtoOrdersHTML + html;
 }
