@@ -7,15 +7,15 @@ html = '';
 function updateView() {
     html = '';
     html += `
-    <button class="logOutbtn">Logg ut</button>
-    <h2 class="Header">Admin</h2> 
-    <div class="menuButtons">
+    <button class="logout">Logg ut</button>
+    <h2 class="header">Admin</h2> 
+    <div class="menubuttons">
     
     `;
 
     for (button of model.admin.menuItems) {
         html += `
-        <button onclick="${button.createFunction}()" class="menuButtons">${button.buttonName}</button>
+        <button onclick="${button.createFunction}()" class="menubuttons">${button.buttonName}</button>
         
         `
 
@@ -28,15 +28,15 @@ function updateView() {
 function OrdersMainMenu() {
     html = '';
     html += ` <button onclick = "updateView()"class = "backBtn"> Back </button> 
-    <button class = "logoutButton logOutbtn"> Logg ut </button> 
-    <h2 class = "Header"> Admin </h2>
-    <div class="menuButtons">
+    <button class = "logout"> Logg ut </button> 
+    <h2 class = "header"> Admin </h2>
+    <div class="menubuttons">
     `;
 
 
     for (button of model.admin.orderMenuItems) {
         html +=
-            ` <button onclick="${button.createFunction}()"class="menuButtons">${button.buttonName}</button>`
+            ` <button onclick="${button.createFunction}()"class="menubuttons">${button.buttonName}</button>`
     }
     html += `</div>`
     output.innerHTML = html;
@@ -80,7 +80,7 @@ function AddOrder() {
 
     html += `
 
-     <div class="content addOrder">
+     <div class="content">
      Navn: <input id="name" type="text" value="Navn her"></input></br>
      Firma: <input id="firm" type="text" value="Firma her"></input> </br>  
      Kontakt Person: <input id="contact" type="text" value="Navn på Kontaktperson"></input> </br>
@@ -170,7 +170,7 @@ function RestOfForm() {
     Betale i kasse: <input id="" type="checkbox"></input> </br>
     Til Fakturering: <input id="toBilling" type="checkbox"></input> </br>
     <br>
-    Send inn ordre : <button class="orderButtons" onclick="pushOrder()">Legg til Ordre</button>
+    Send inn ordre : <button onclick="pushOrder()">Legg til Ordre</button>
     </br>
     </div>`;
     output.innerHTML = backtoOrdersHTML + html;
@@ -179,25 +179,33 @@ function RestOfForm() {
 function Billing() {
     html = ''
     html += `
-    <div class="content billing">
-    <h1 class="Header">Til Faktura</h1>
+    
+    <h1 class="header">Til Faktura</h1>
     `
     for (bills of model.admin.orders) {
 
         if (bills.toBilling == true) {
-            html += ` ${bills.name},
+            html += ` 
+            <div class="content">
+            
+            ${bills.name},
                       ${bills.cakeType},         
                       ${bills.deliveryDate}, 
                       ${bills.deliveryTime},
                       ${bills.size},
-                      ${bills.note},`
+                      ${bills.note},
+                 `
+
 
             if (bills.delivery == true) {
                 html += `Skal Leveres,`
             }
 
+
             html += `<br>
-                       <button class="orderButtons" onclick="toggleInspectMode(${bills.id})">Se Ordre</button>  <button class="orderButtons" onclick="approveOrder(${bills.id})">Godkjenn</button>
+                       <button onclick="toggleInspectMode(${bills.id})">Se Ordre</button>  <button onclick="approveOrder(${bills.id})">Godkjenn</button>
+                       <br>
+                      
                        `
 
 
@@ -212,16 +220,18 @@ function Billing() {
 function ApprovedOrders() {
     html = '';
     html += ` 
-    <div class="content approvedOrders" ><h1>Godkjente Bestillinger</h1>`;
+    <div class="content" ><h1>Godkjente Bestillinger</h1>`;
     for (bills of model.admin.orders) {
         if (bills.isApproved == true) {
             html += `${bills.name},
              ${bills.cakeType} ,
              ${bills.deliveryDate}, 
              ${bills.deliveryTime},
+             <br>
              <button onclick="toggleInspectMode(${bills.id})">Se ordre</button>
-             <button onclick="cancelOrder(${bills.id})">Kanseler Ordre</button>
-             </br>
+             <button  onclick="cancelOrder(${bills.id})">Kanseler Ordre</button>
+              <br>  
+             <hr>
              `;
         }
 
@@ -234,7 +244,7 @@ function ApprovedOrders() {
 function CanceledOrders() {
     html = '';
     html += `
-     <div class="content canceledrders"><h1>Kanselerte Bestillinger</h1>`;
+     <div class="content"><h1>Kanselerte Bestillinger</h1>`;
     for (bills of model.admin.orders) {
         if (bills.isCanceled == true) {
             html += `${bills.name},
@@ -247,6 +257,7 @@ function CanceledOrders() {
     html += `</div>`
     output.innerHTML = backtoOrdersHTML + html;
 }
+
 function inspectMode() {
     for (order of model.admin.orders) {
         if (order.inspectMode == true) {
@@ -262,21 +273,16 @@ function inspectMode() {
             Kaketype: ${order.cakeType} <br>
             Kakestørrelse: ${order.size} <br>
             Tillegg: ${order.addon} <br>`
-            if (order.withMarsipan == true) {
-                order.withMarsipan = 'Ja'
 
-            }
-            else {
-                order.withMarsipan = 'Nei'
-            }
+            order.withMarsipan == true ? order.withMarsipan = 'Ja' : order.withMarsipan = 'Nei';
+
             html += ` Marsipan?: ${order.withMarsipan} <br> `
 
             if (order.delivery == true) {
                 order.delivery = 'Skal Leveres'
                 html += `Levering?: ${order.delivery} <br> 
                          Tidspunkt for levering: ${order.deliveryTime}<br>`
-            }
-            else {
+            } else {
                 order.delivery = 'Skal ikke leveres';
             }
 

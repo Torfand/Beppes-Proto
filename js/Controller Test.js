@@ -61,6 +61,6 @@ function toggleInspectMode(orderID) {
     let order = model.admin.orders[orderID];
     order.inspectMode = true;
 
-     inspectMode()
+    inspectMode()
 }
 
