@@ -164,16 +164,15 @@ const model = {
 
         ],
 
-        commonTasks: [
-            { taskName: 'Bestille varer fra Asko', isDone: false, taskStartedby: 'Tom Erik', finishTime: '' },
-            { taskName: 'Rengjøre ovn og espresso maskin', isDone: true, taskStartedby: '', finishTime: '' },
-            { taskName: 'Bestille nye takeaway poser', isDone: false, taskStartedby: '', finishTime: '' },
+        tasks: [
+            { id: 1, name: 'Bestille varer fra Asko', isDone: false, taskStartedby: 'Tom Erik', finishTime: '' },
+            { id: 2, name: 'Rengjøre ovn og espresso maskin', isDone: true, taskStartedby: '', finishTime: '' },
+            { id: 3, name: 'Bestille nye takeaway poser', isDone: false, taskStartedby: '', finishTime: '' },
+            { id: 4, name: 'Kjøpe med 20 liter melk på veien.', isDone: true, taskStartedby: '', finishTime: '' },
+            { id: 5, name: 'Rengjøre kjøleskap.', isDone: false, taskStartedby: '', finishTime: '' },
         ],
 
-        personalTasks: [
-            { taskName: 'Kjøpe med 20 liter melk på veien.', isDone: true, taskStartedby: '', finishTime: '' },
-            { taskName: 'Rengjøre kjøleskap.', isDone: false, taskStartedby: '', finishTime: '' },
-        ],
+
 
 
 
