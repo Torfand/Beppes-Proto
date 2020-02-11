@@ -1,6 +1,6 @@
 function pushOrder() {
 
-    let { cakeType, name, firm, contact, phoneNr, email, idNR, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase } = formValues()
+    let { cakeType, name, firm, contact, phoneNr, email, idNR, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase, isCanceled } = formValues()
     let id = 0
     for (let i = 0; i <= model.admin.orders.length; i++) {
         id = i
@@ -10,9 +10,12 @@ function pushOrder() {
         cakeType = 'Rund Bløtkake Med Marsipan'
     } else if (cakeType == 2) {
         cakeType = 'Sjokoladekake Standard'
+    } else if (cakeType == 3) {
+        cakeType = 'Raw kake'
     }
+
     //
-    model.admin.orders.push({ id, name, firm, contact, phoneNr, email, idNR, cakeType, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase })
+    model.admin.orders.push({ id, name, firm, contact, phoneNr, email, idNR, cakeType, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase, isCanceled })
     return alert('Ordre lagt til')
 }
 
@@ -39,7 +42,8 @@ function formValues() {
     let invoiceNR = document.getElementById("invoiceNumber").value
     let toBilling = document.getElementById("toBilling").checked
     let isApproved = false
-    return { cakeType, name, firm, contact, phoneNr, email, idNR, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase }
+    let isCanceled = false;
+    return { cakeType, name, firm, contact, phoneNr, email, idNR, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase, isCanceled }
 }
 
 function approveOrder(orderID) {
@@ -74,4 +78,5 @@ function toggleInspectMode(orderID) {
     order.inspectMode = true;
 
     inspectMode()
+    order.inspectMode = false;
 }

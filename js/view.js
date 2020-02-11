@@ -294,7 +294,7 @@ function inspectMode() {
             Notat: ${order.note} <br>
             Id-nr : ${order.idNR} <br>
             Faktura-Nummer : ${order.invoiceNR} <br> `
-            order.isCanceled == false ? html += `<button onclick="cancelOrder(${order.id})"> Kanseler Ordre </button> ` : html += ''
+            order.isCanceled == false ? html += `<button onclick="cancelOrder(${order.id})"> Kanseler Ordre </button> ` : ''
         }
     }
     html += `</div>`

@@ -6,7 +6,7 @@ const model = {
 
     cakeTypes: [
         { id: 1, name: 'Rund Bløtkake Med Marsipan', cakeFillings: [1, 2, 3, 5], cakeBases: [1], cakeAddOns: [1, 4, 5], cakeSizes: [1], },
-        { id: 2, name: 'Sjokoladekake Standard', cakeFillings: [4], cakeBases: [2], cakeAddOns: [1, 2], cakeSizes: [2], cakePrice: [2,] },
+        { id: 2, name: 'Sjokoladekake Standard', cakeFillings: [4], cakeBases: [2], cakeAddOns: [1, 2], cakeSizes: [2], cakePrice: [2, ] },
         { id: 3, name: 'Raw kake', cakeFillings: [4, 5, 6, 7], cakeBases: [6], cakeAddOns: [1, 3], cakeSizes: [2], cakePrice: [2] },
     ],
 
