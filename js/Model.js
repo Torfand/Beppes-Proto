@@ -78,7 +78,7 @@ const model = {
 
 
         calendarMonths: [
-            { February: 28, },
+            { createFunction: 'dailyNote', February: 28, },
         ],
 
         calendarDays: [
@@ -91,6 +91,18 @@ const model = {
             { day: 'Søndag' }
         ],
 
+        calendarTempTime: [
+
+        ],
+        calendarTempDates: [
+
+        ],
+
+
+        calendarNotes: [
+            { id: 1, orders: [0], otherTask: 'Vask gulvet', notes: '', }
+
+        ],
 
         orders: [{
                 id: 0,
@@ -107,7 +119,9 @@ const model = {
                 adress: 'norgesgate 3',
                 invoiceNR: '123123123123',
                 delivery: false,
-                deliveryDate: '',
+                deliveryDate: '2020-02-01',
+                dateConvertedtoMS: false,
+
                 deliveryTime: '',
                 toBilling: false,
                 isApproved: true,
@@ -130,7 +144,10 @@ const model = {
                 adress: 'ingenjobbsgate 31',
                 invoiceNR: '876786786',
                 delivery: true,
-                deliveryDate: '',
+                deliveryDate: '2020-02-02',
+                dateConvertedtoMS: false,
+
+
                 deliveryTime: '12:45',
                 toBilling: true,
                 isApproved: false,
@@ -153,7 +170,10 @@ const model = {
                 adress: 'Brødgata 15',
                 invoiceNR: '347867862',
                 delivery: false,
-                deliveryDate: '',
+                deliveryDate: '2020-02-03',
+                dateConvertedtoMS: false,
+
+
                 deliveryTime: '',
                 toBilling: false,
                 isApproved: false,
@@ -162,15 +182,13 @@ const model = {
                 withMarsipan: false,
             },
 
+
+
+
         ],
 
-        tasks: [
-            { id: 1, name: 'Bestille varer fra Asko', isDone: false, taskStartedby: 'Tom Erik', finishTime: '' },
-            { id: 2, name: 'Rengjøre ovn og espresso maskin', isDone: true, taskStartedby: '', finishTime: '' },
-            { id: 3, name: 'Bestille nye takeaway poser', isDone: false, taskStartedby: '', finishTime: '' },
-            { id: 4, name: 'Kjøpe med 20 liter melk på veien.', isDone: true, taskStartedby: '', finishTime: '' },
-            { id: 5, name: 'Rengjøre kjøleskap.', isDone: false, taskStartedby: '', finishTime: '' },
-        ],
+
+
 
 
 

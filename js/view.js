@@ -1,6 +1,8 @@
 let html;
 const backtoOrdersHTML = `<button onclick="OrdersMainMenu()" class="backBtn">Back</button> `
 const backtoMainHTML = `<button onclick="updateView()" class="backBtn">Back</button> `
+let toggleCalendarPane = false;
+
 
 html = '';
 
@@ -58,11 +60,14 @@ function Calendar() {
     }
     html += `</tr>`
     html += `<tr>`
+    let x;
     for (month of model.admin.calendarMonths) {
 
         for (let i = 1; i <= month.February; i++) {
+
+            x = new Date(2020, 1, i).toLocaleDateString("nb-no")
             html += `
-                    <td>${i}</td>`;
+                    <td onclick="${month.createFunction}(this)">${x}</td>`;
             if (i % 7 == 0) {
                 html += `</tr>`
             }
@@ -72,8 +77,26 @@ function Calendar() {
             </table>
             </div> `;
 
+
     output.innerHTML = backtoMainHTML + html;
 }
+
+function dailyNote(date) {
+    makecomparisonIndex();
+
+    for (order of model.admin.orders) {
+        if (date.innerHTML == order.deliveryDate) {
+            html = `<div class="content">${order.deliveryDate}</div> `;
+
+
+        }
+    }
+    output.innerHTML = backtoOrdersHTML + html;
+}
+
+
+
+
 
 function AddOrder() {
     html = '';
@@ -161,18 +184,7 @@ function cakeAddons() {
 
 
 
-function filteredListBasedOnIdAndOtherList(id, listToLookupIdIn, fieldName, listToBeFiltered) {
-    const obj = getObjectFromId(id, listToLookupIdIn);
-    return filterListById(obj[fieldName], listToBeFiltered);
-}
 
-function getObjectFromId(id, list) {
-    return list.filter(e => e.id == id)[0];
-}
-
-function filterListById(listOfIds, listOfObjects) {
-    return listOfObjects.filter(e => listOfIds.includes(e.id));
-}
 
 function RestOfForm() {
     html += ` </br>
@@ -183,20 +195,20 @@ function RestOfForm() {
     Hentes: <input type="checkbox" ></input> </br>
     Leveres: <input type="checkbox" id="delivery"></input> </br>
     Leverings Adresse: <input id="deliveryAdress" type="text" value="Adresse her"></input> </br>
-    Dato: <input type="text" id="deliveryDate" value="Leverings dato her"></input> </br>
+    Dato: <input type="date" id="deliveryDate"></input> </br>
     Tidspunkt: <input id="timeOfDelivery" type="text" value="Hente/leveringstidspunkt"></input> </br>
     Faktura nummer: <input id="invoiceNumber" type="text" value="Faktura nummer her"></input> </br>
    
-     </br>
-     </hr>
- 
+    
     Totalbeløp: ${model.cakeSizes[0].BasePrice}.- <br>
     Betale i kasse: <input id="" type="checkbox"></input> </br>
     Til Fakturering: <input id="toBilling" type="checkbox"></input> </br>
     <br>
-    Send inn ordre : <button onclick="pushOrder(), OrdersMainMenu() ">Legg til Ordre</button>
+    Send inn ordre : <button onclick="pushOrder(), OrdersMainMenu(), convertAndfilterdates() ">Legg til Ordre</button>
     </br>
     </div>`;
+
+
     output.innerHTML = backtoOrdersHTML + html;
 }
 

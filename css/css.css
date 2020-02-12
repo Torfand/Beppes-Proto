@@ -1,3 +1,41 @@
+
+
+.calendarModeContent {
+    grid-area: 3 / 3 / 11 / 9;
+    text-align: center;
+}
+
+.calendarModeContent>button {
+    padding: 50px;
+    margin: 3px
+}
+
+.calendarModeHeader {
+    grid-area: 1 / 4 / 2 / 8;
+    text-align: center;
+}
+
+.calendarModepane {
+    grid-area: 2 / 3 / 3 / 4;
+}
+
+.calendarModeMenubuttons>button {
+    align-self: center;
+    display: block;
+    width: 200px;
+    height: 120px;
+    margin: auto;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+.calendarModebackBtn {
+    grid-area: 2 / 8 / 3 / 9;
+}
+
+
+.calendarModelogout {
+    grid-area: 1 / 9 / 13 / 13;
+}
+/* ------ */
 .parent {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -58,9 +96,7 @@
     margin: auto;
 }
 
-table,
-tr,
-td {
+table, tr, td {
     border: 1px solid black;
     border-collapse: collapse;
     text-align: center;
@@ -69,8 +105,7 @@ td {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
-td,
-th {
+td, th {
     padding: 4px;
 }
 
