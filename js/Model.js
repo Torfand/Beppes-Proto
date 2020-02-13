@@ -147,8 +147,6 @@ const model = {
                 delivery: true,
                 deliveryDate: '2020-02-02',
                 dateConvertedtoMS: false,
-
-
                 deliveryTime: '12:45',
                 toBilling: true,
                 isApproved: false,

@@ -1,4 +1,5 @@
 let html;
+let popup;
 const backtoOrdersHTML = `<button onclick="OrdersMainMenu()" class="backBtn">Back</button> `
 const backtoMainHTML = `<button onclick="updateView()" class="backBtn">Back</button> `
 let toggleCalendarPane = false;
@@ -67,7 +68,7 @@ function Calendar() {
 
             x = new Date(2020, 1, i).toLocaleDateString("nb-no")
             html += `
-                    <td onclick="${month.createFunction}(this)">${x}</td>`;
+                    <td onclick="${month.createFunction}(this), openNav()">${x}</td>`;
             if (i % 7 == 0) {
                 html += `</tr>`
             }
@@ -83,22 +84,36 @@ function Calendar() {
 
 function dailyNote(date) {
     makecomparisonIndex();
-
+    popup = ''; 
+    popup = `<div id="mySidenav" class="sidenav"> <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>`
     for (order of model.admin.orders) {
         if (date.innerHTML == order.deliveryDate) {
             for (activity of model.admin.calendarNotes) {
-              
-                if(date.innerHTML == activity.date) {
-                    html += `<div class="content">${activity.task}`;
+                
+                if (date.innerHTML == activity.date) {
+                    
+        
+        
+                    popup += `<div>${activity.task} </div>`;
 
                 }
-                
+
 
 
             }
+
+            popup += `</div>`
         }
     }
-    output.innerHTML = backtoOrdersHTML + html;
+    output.innerHTML = backtoOrdersHTML + html + popup;
+}
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0px";
 }
 
 
