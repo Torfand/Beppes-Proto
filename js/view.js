@@ -86,9 +86,16 @@ function dailyNote(date) {
 
     for (order of model.admin.orders) {
         if (date.innerHTML == order.deliveryDate) {
-            html = `<div class="content">${order.deliveryDate}</div> `;
+            for (activity of model.admin.calendarNotes) {
+              
+                if(date.innerHTML == activity.date) {
+                    html += `<div class="content">${activity.task}`;
+
+                }
+                
 
 
+            }
         }
     }
     output.innerHTML = backtoOrdersHTML + html;

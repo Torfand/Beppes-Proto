@@ -78,7 +78,7 @@ const model = {
 
 
         calendarMonths: [
-            { createFunction: 'dailyNote', February: 28, },
+            { createFunction: 'dailyNote', February: 29, },
         ],
 
         calendarDays: [
@@ -100,8 +100,9 @@ const model = {
 
 
         calendarNotes: [
-            { id: 1, orders: [0], otherTask: 'Vask gulvet', notes: '', }
-
+            { id: 1, orders: [0], task: 'Vask gulvet',responsible:'', notes: '', date:'2.2.2020', isDone: false },
+            { id: 1, orders: [0], task: 'Bestill varer fra ASKO', notes: '', date:'2.2.2020', isDone: false },
+            { id: 1, orders: [0], task: 'Rydd i kjøleskapet', notes: '', date:'1.2.2020', isDone: false }
         ],
 
         orders: [{
