@@ -5,12 +5,14 @@ const backtoMainHTML = `<button onclick="updateView()" class="backBtn">Back</but
 let toggleCalendarPane = false;
 
 
-html = '';
+
+
+
+
 
 function updateView() {
     html = '';
     html += `
-    <button class="logout">Logg ut</button>
     <h2 class="header">Admin</h2> 
     <div class="menubuttons">
     
@@ -30,10 +32,9 @@ function updateView() {
 
 function OrdersMainMenu() {
     html = '';
-    html += ` <button onclick = "updateView()"class = "backBtn"> Back </button> 
-    <button class = "logout"> Logg ut </button> 
-    <h2 class = "header"> Admin </h2>
-    <div class="menubuttons">
+    html += `   <button onclick = "updateView()"class = "backBtn"> Back </button> 
+                <h2 class = "header"> Admin </h2>
+                <div class="menubuttons">
     `;
 
 
@@ -50,9 +51,13 @@ function OrdersMainMenu() {
 
 
 function Calendar() {
+
     html = '';
-    html = `<div class="content"> <table class="calendar">
-    <tr>`
+    html = `
+    <table class="content">
+    <tr>
+    
+    `
 
     for (day of model.admin.calendarDays) {
 
@@ -68,15 +73,17 @@ function Calendar() {
 
             x = new Date(2020, 1, i).toLocaleDateString("nb-no")
             html += `
-                    <td onclick="${month.createFunction}(this), openNav()">${x}</td>`;
+                    <td onclick="${month.createFunction}(this), openNav(${i})" id="${i}">${x}</td>`;
+
             if (i % 7 == 0) {
                 html += `</tr>`
             }
         }
     }
-    html += `</tr>
+    html += `
+            </tr>
             </table>
-            </div> `;
+            `;
 
 
     output.innerHTML = backtoMainHTML + html;
@@ -84,36 +91,52 @@ function Calendar() {
 
 function dailyNote(date) {
     makecomparisonIndex();
-    popup = ''; 
+
+
     popup = `<div id="mySidenav" class="sidenav"> <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>`
+    popup += `<button>Endre notater</button> <br> <br>
+    <div>`
     for (order of model.admin.orders) {
         if (date.innerHTML == order.deliveryDate) {
-            for (activity of model.admin.calendarNotes) {
-                
-                if (date.innerHTML == activity.date) {
-                    
-        
-        
-                    popup += `<div>${activity.task} </div>`;
+            popup += `<ul>
+            <li>Name: ${order.name}</li>
+            <li>Kaketype: ${order.cakeType}</li>
+            <li>Tidspunkt: ${order.deliveryTime}</li>
+                    </ul>`
+        }
 
-                }
+    }
+    popup += `</div> <div>`
 
-
-
-            }
-
-            popup += `</div>`
+    for (activity of model.admin.calendarNotes) {
+        if (date.innerHTML == activity.date) {
+            popup += `<ul>
+            <li>${activity.task}</li>
+            </ul>`
         }
     }
+    popup += `</div> </div>`
     output.innerHTML = backtoOrdersHTML + html + popup;
 }
 
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
+
+
+function openNav(id) {
+
+
+    document.getElementById(id).classList.add('active');
+
+
+    document.getElementById("mySidenav").style.width = "500px";
+    document.getElementById("calendar").style.marginRight = "500px";
+
 }
 
 function closeNav() {
-    document.getElementById("mySidenav").style.width = "0px";
+
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("calendar").style.marginLeft = "0";
+
 }
 
 
@@ -291,7 +314,7 @@ function CanceledOrders() {
     for (bills of model.admin.orders) {
         if (bills.isCanceled == true) {
             html += `${bills.name},
-             ${bills.cakeType},
+                 ${bills.cakeType},
              <br>
             <button onclick="toggleInspectMode(${bills.id})">Se ordre</button> </br>`;
         }
