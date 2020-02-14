@@ -367,5 +367,5 @@ function editNote() {
 
     
 
-    output.innerHTML = backtoOrdersHTML + html;
+
 }
