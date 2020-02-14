@@ -1,7 +1,7 @@
 let html;
 let popup;
-const backtoOrdersHTML = `<button onclick="OrdersMainMenu()" class="backBtn">Back</button> `
-const backtoMainHTML = `<button onclick="updateView()" class="backBtn">Back</button> `
+const backtoOrdersHTML = `<button onclick="OrdersMainMenu()" class="backBtn">Tilbake</button> `
+const backtoMainHTML = `<button onclick="updateView()" class="backBtn">Tilbake</button> `
 let toggleCalendarPane = false;
 
 
@@ -32,7 +32,7 @@ function updateView() {
 
 function OrdersMainMenu() {
     html = '';
-    html += `   <button onclick = "updateView()"class = "backBtn"> Back </button> 
+    html += `   <button onclick = "updateView()"class = "backBtn"> Tilbake </button> 
                 <h2 class = "header"> Admin </h2>
                 <div class="menubuttons">
     `;
