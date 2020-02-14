@@ -53,7 +53,9 @@ function OrdersMainMenu() {
 function Calendar() {
 
     html = '';
-    html = `<div class="content" id="content">
+    html = `
+    <button onclick="updateView()" class="backBtn">Back</button>
+    <div class="content" id="content">
     <table>
     <tr>
     
@@ -88,7 +90,7 @@ function Calendar() {
             `;
 
 
-    output.innerHTML = backtoMainHTML + html;
+    output.innerHTML = html;
 }
 
 function dailyNote(date) {
@@ -96,7 +98,7 @@ function dailyNote(date) {
 
 
     popup = `<div id="mySidenav" class="sidenav"> <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>`
-    popup += `<button>Legg til Notat</button> <br> <br>
+    popup += `<button onclick="editNote()">Legg til Notat</button> 
     <div>`
     for (order of model.admin.orders) {
         if (date.innerHTML == order.deliveryDate) {
@@ -358,5 +360,12 @@ function inspectMode() {
         }
     }
     html += `</div>`
+    output.innerHTML = backtoOrdersHTML + html;
+}
+
+function editNote() {
+
+    
+
     output.innerHTML = backtoOrdersHTML + html;
 }
