@@ -53,8 +53,8 @@ function OrdersMainMenu() {
 function Calendar() {
 
     html = '';
-    html = `
-    <table class="content">
+    html = `<div class="content" id="content">
+    <table>
     <tr>
     
     `
@@ -83,6 +83,8 @@ function Calendar() {
     html += `
             </tr>
             </table>
+            </div>
+
             `;
 
 
@@ -94,7 +96,7 @@ function dailyNote(date) {
 
 
     popup = `<div id="mySidenav" class="sidenav"> <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>`
-    popup += `<button>Endre notater</button> <br> <br>
+    popup += `<button>Legg til Notat</button> <br> <br>
     <div>`
     for (order of model.admin.orders) {
         if (date.innerHTML == order.deliveryDate) {
@@ -128,14 +130,15 @@ function openNav(id) {
 
 
     document.getElementById("mySidenav").style.width = "500px";
-    document.getElementById("calendar").style.marginRight = "500px";
+    document.getElementById("content").style.marginRight = "500px";
+    document.getElementById("content").style.padding = "10px";
 
 }
 
 function closeNav() {
 
     document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("calendar").style.marginLeft = "0";
+    document.getElementById("content").style.marginRight = "0";
 
 }
 
