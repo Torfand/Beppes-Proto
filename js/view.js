@@ -54,7 +54,7 @@ function Calendar() {
 
     html = '';
     html = `
-    <button onclick="updateView()" class="backBtn">Back</button>
+    <button onclick="updateView()" class="backBtn">Tilbake</button>
     <div class="content" id="content">
     <table>
     <tr>
