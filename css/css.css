@@ -9,30 +9,77 @@
     width: 100vw;
     height: 100vh;
     color: black;
-    background-image: url(beppe.jpg);
-    background-size: 35vw 35vh;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position-y: 200px;
     font-size: 18px;
+    padding: 0;
+    margin: 0;
     font-weight: bolder;
     box-sizing: content-box;
+}
+
+body {
+    background-image: url(beppe.jpg);
+    background-size: 100vw;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
 }
 
 .content {
     grid-area: 2 / 2 / 12 / 12;
     text-align: center;
     align-self: center;
+    transition: 2s;
 }
 
-.content>button {
+
+/* .content>button {
     padding: 50px;
     margin: 3px
-}
+} */
 
 .content>input {
     height: 30px;
     font-size: 16px;
+}
+
+input[type=checkbox] {
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(2);
+    /* IE */
+    -moz-transform: scale(2);
+    /* FF */
+    -webkit-transform: scale(2);
+    /* Safari and Chrome */
+    -o-transform: scale(2);
+    /* Opera */
+    transform: scale(2);
+    padding: 10px;
+}
+
+input[type=text] {
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(1);
+    /* IE */
+    -moz-transform: scale(1);
+    /* FF */
+    -webkit-transform: scale(1);
+    /* Safari and Chrome */
+    -o-transform: scale(1);
+    /* Opera */
+    transform: scale(1);
+}
+
+input[type=date] {
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(1);
+    /* IE */
+    -moz-transform: scale(1);
+    /* FF */
+    -webkit-transform: scale(1);
+    /* Safari and Chrome */
+    -o-transform: scale(1);
+    /* Opera */
+    transform: scale(1);
 }
 
 .header {
@@ -57,6 +104,8 @@
 .backBtn {
     grid-area: 1 / 1 / 2 / 2;
     font-size: 18px;
+    margin-left: 10px;
+    margin-top: 20px;
 }
 
 .logout {
@@ -67,7 +116,9 @@
     margin: auto;
 }
 
-table, tr, td {
+table,
+tr,
+td {
     border: 1px solid black;
     border-collapse: collapse;
     text-align: center;
@@ -81,7 +132,7 @@ table, tr, td {
 }
 
 th {
-    background-color: crimson;
+    background-color: blue;
     border: 1px solid black;
     border-collapse: collapse;
     padding: 8px;
@@ -91,21 +142,17 @@ th {
 td {
     height: 125px;
     width: 250px;
-
 }
 
 tr {
-    background-color: darkgrey;
-    color: white;
+    background-color: white;
+    color: black;
     font-size: 22px;
 }
 
-tr:nth-child(even) {
-    background-color: gray;
-    color: white;
-}
 
 /* sidebar */
+
 
 /* The side navigation menu */
 
@@ -116,15 +163,18 @@ tr:nth-child(even) {
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: #111;
     overflow-x: hidden;
-    transition: 0.9s;
     padding-top: 60px;
+    transition-duration: 2s;
+    background-image: url(https://cdn.sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg);
+    background-repeat: no-repeat;
 }
 
 .sidenav>button {
     margin-bottom: 100px;
+    margin-left: 200px;
     display: block;
+    transition: 10s;
     padding: 20px;
 }
 
@@ -134,10 +184,10 @@ tr:nth-child(even) {
     font-size: 25px;
     color: white;
     display: block;
-    transition: .3s;
+    transition: 10s;
 }
 
-.sidenav div:hover {
+.sidenav li:hover {
     color: #f1f1f1;
 }
 

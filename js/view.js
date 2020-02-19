@@ -51,12 +51,6 @@ function OrdersMainMenu() {
 
 
 function Calendar() {
-    let j = 0
-    for (task of model.admin.calendarNotes) {
-        if (task.isNew == true) {
-            j++
-        }
-    }
     html = '';
     html = `
     <button onclick="updateView()" class="backBtn">Tilbake</button>
@@ -77,14 +71,14 @@ function Calendar() {
     for (month of model.admin.calendarMonths) {
 
         for (let i = 1; i <= month.February; i++) {
-
             x = new Date(2020, 1, i).toLocaleDateString("nb-no")
             html += `
-                    <td onclick="${month.createFunction}(this), openNav(${i})" id="${i}">${x}<br></td>`;
+                    <td onclick="${month.createFunction}(this), openNav(${i})" id="${i}">${x}</td>`;
 
 
             if (i % 7 == 0) {
                 html += `</tr>`
+
             }
         }
     }
@@ -147,12 +141,15 @@ function openNav(id) {
 
 
     document.getElementById(id).classList.add('active');
+    setTimeout(() => { extendSidebar() }, 1)
 
 
+}
+
+function extendSidebar() {
     document.getElementById("mySidenav").style.width = "500px";
     document.getElementById("content").style.marginRight = "500px";
     document.getElementById("content").style.padding = "10px";
-
 }
 
 function closeNav() {
@@ -166,8 +163,8 @@ function orderType() {
     let a = true;
     let b = false;
     html = '';
-    html += ` Firma:<input id="firmOrder" type="checkbox" onchange="AddOrder(this,${a})"></input> 
-             Privat:<input type="checkbox" onchange="AddOrder(this,${b})">Privat</input>                              `
+    html += ` <div class="content ">Firma:<input class="orderType" id="firmOrder" type="checkbox" onchange="AddOrder(this,${a})"></input> 
+             Privat:<input class="orderType" type="checkbox" onchange="AddOrder(this,${b})"></input> </div>                             `
 
     output.innerHTML = backtoOrdersHTML + html;
 }
