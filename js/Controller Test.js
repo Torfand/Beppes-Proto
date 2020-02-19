@@ -1,6 +1,6 @@
 function pushOrder() {
+    let { cakeType, name, firm, contact, phoneNr, email, idNR, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase, isCanceled, dateConvertedtoMS, } = formValues()
 
-    let { cakeType, name, firm, contact, phoneNr, email, idNR, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase, isCanceled, dateConvertedtoMS } = formValues()
     let id = 0
     for (let i = 0; i <= model.admin.orders.length; i++) {
         id = i
@@ -13,11 +13,14 @@ function pushOrder() {
     } else if (cakeType == 3) {
         cakeType = 'Raw kake'
     }
+    if (name == '' && contact == '' && phoneNr == '' && email == '' && adress == '' ||
+        name == '' || contact == '' || phoneNr == '' || email == '' || adress == '') {
+        return alert('Navn, Kontakt Person, Tlf Nr, E-Post og Adresse må være utfylt');
+    }
+    model.admin.orders.push({ id, name, firm, contact, phoneNr, email, idNR, cakeType, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase, isCanceled, dateConvertedtoMS, })
 
-    //
-    model.admin.orders.push({ id, name, firm, contact, phoneNr, email, idNR, cakeType, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase, isCanceled, dateConvertedtoMS })
     convertDateToMS();
-
+    OrdersMainMenu();
     return alert('Ordre lagt til')
 
 }
@@ -31,11 +34,21 @@ function convertAndfilterdates() {
 
 function formValues() {
     let name = document.getElementById("name").value
-    let firm = document.getElementById("firm").value
+    let firm = document.getElementById("firm")
+    if (firm == null) {
+        firm = 'ingen'
+    } else {
+        firm = firm.value
+    }
     let contact = document.getElementById("contact").value
     let phoneNr = document.getElementById("number").value
     let email = document.getElementById("mail").value
-    let idNR = document.getElementById("idNumber").value
+    let idNR = document.getElementById("idNumber")
+    if (idNR == null) {
+        idNR = 'ingen'
+    } else {
+        idNR = idNR.value
+    }
     let cakeType = document.getElementById('cakeSelector').value
     let cakeFilling = document.getElementById('cakeFillingSelector').value
     let cakeBase = document.getElementById('cakeBaseSelector').value
@@ -146,4 +159,23 @@ function makecomparisonIndex() {
             }
         }
     }
+}
+
+function saveNote(selected) {
+
+    let id = 0
+    for (let i = 0; i <= model.admin.calendarNotes.length; i++) {
+        id = i
+    }
+    let date = selected.id
+    let isNew = true;
+    let task = document.getElementById('noteInput').value;
+    model.admin.calendarNotes.push({ id, task, date, isNew })
+    dailyNote(date);
+
+
+
+
+
+
 }

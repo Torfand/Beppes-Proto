@@ -70,7 +70,7 @@ const model = {
         ],
         orderMenuItems: [
 
-            { createFunction: 'AddOrder', buttonName: 'Legg til Bestilling' },
+            { createFunction: 'orderType', buttonName: 'Legg til Bestilling' },
             { createFunction: 'Billing', buttonName: 'Til Fakturering' },
             { createFunction: 'ApprovedOrders', buttonName: 'Godkjente Bestillinger' },
             { createFunction: 'CanceledOrders', buttonName: 'Kanselerte Bestillinger' },
@@ -101,9 +101,9 @@ const model = {
 
 
         calendarNotes: [
-            { id: 1, orders: [0], task: 'Vask gulvet', responsible: '', notes: '', date: '2.2.2020', isDone: false },
-            { id: 1, orders: [0], task: 'Bestill varer fra ASKO', notes: '', date: '2.2.2020', isDone: false },
-            { id: 1, orders: [0], task: 'Rydd i kjøleskapet', notes: '', date: '3.2.2020', isDone: false },
+            { id: 0, orders: [0], task: 'Vask gulvet', responsible: '', date: '2.2.2020', isNew: false },
+            { id: 1, orders: [0], task: 'Bestill varer fra ASKO', date: '2.2.2020', isNew: false },
+            { id: 2, orders: [0], task: 'Rydd i kjøleskapet', date: '3.2.2020', isNew: true },
 
 
         ],
@@ -131,6 +131,7 @@ const model = {
                 isCanceled: false,
                 withMarsipan: true,
                 inspectMode: false,
+                firmOrder: false,
             },
             {
                 id: 1,
@@ -155,6 +156,7 @@ const model = {
                 inspectMode: false,
                 isCanceled: false,
                 withMarsipan: false,
+                firmOrder: false,
             },
             {
                 id: 2,
@@ -179,6 +181,7 @@ const model = {
                 isCanceled: true,
                 inspectMode: false,
                 withMarsipan: false,
+                firmOrder: false,
             },
 
 

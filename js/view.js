@@ -51,7 +51,12 @@ function OrdersMainMenu() {
 
 
 function Calendar() {
-
+    let j = 0
+    for (task of model.admin.calendarNotes) {
+        if (task.isNew == true) {
+            j++
+        }
+    }
     html = '';
     html = `
     <button onclick="updateView()" class="backBtn">Tilbake</button>
@@ -75,31 +80,38 @@ function Calendar() {
 
             x = new Date(2020, 1, i).toLocaleDateString("nb-no")
             html += `
-                    <td onclick="${month.createFunction}(this), openNav(${i})" id="${i}">${x}</td>`;
+                    <td onclick="${month.createFunction}(this), openNav(${i})" id="${i}">${x}<br></td>`;
+
 
             if (i % 7 == 0) {
                 html += `</tr>`
             }
         }
     }
-    html += `
-            </tr>
-            </table>
-            </div>
 
-            `;
+
+
+
+
+    html += `
+                </tr>
+                </table>
+                </div>
+    
+                `;
 
 
     output.innerHTML = html;
 }
+
 
 function dailyNote(date) {
     makecomparisonIndex();
 
 
     popup = `<div id="mySidenav" class="sidenav"> <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>`
-    popup += `<button onclick="editNote()">Legg til Notat</button> 
-    <div>`
+    popup += `<button id="${date.innerHTML}" onclick="editNote(this)">Legg til Notat</button> 
+    <div id="note">`
     for (order of model.admin.orders) {
         if (date.innerHTML == order.deliveryDate) {
             popup += `<ul>
@@ -121,9 +133,15 @@ function dailyNote(date) {
     }
     popup += `</div> </div>`
     output.innerHTML = backtoOrdersHTML + html + popup;
+
 }
 
+function editNote(date) {
 
+    let note = document.getElementById('note');
+    note.innerHTML = `<input type="text" id="noteInput"></input><button id="${date.id}" onclick="saveNote(this)">Lagre notat</button>`
+
+}
 
 function openNav(id) {
 
@@ -144,28 +162,52 @@ function closeNav() {
 
 }
 
+function orderType() {
+    let a = true;
+    let b = false;
+    html = '';
+    html += ` Firma:<input id="firmOrder" type="checkbox" onchange="AddOrder(this,${a})"></input> 
+             Privat:<input type="checkbox" onchange="AddOrder(this,${b})">Privat</input>                              `
+
+    output.innerHTML = backtoOrdersHTML + html;
+}
 
 
 
-
-function AddOrder() {
+function AddOrder(firmOrder, a, b) {
+    console.log(firmOrder, a, b)
     html = '';
 
-    html += `
+    if (firmOrder.checked == true && a == true) {
+        html += `
 
      <div class="content">
-     Navn: <input id="name" type="text" value="Navn her"></input></br>
-     Firma: <input id="firm" type="text" value="Firma her"></input> </br>  
-     Kontakt Person: <input id="contact" type="text" value="Navn på Kontaktperson"></input> </br>
-     Telefon Nummer: <input id="number" type="text" value="Tlf her"></input></br>
-     Epost: <input id="mail" type="text" value="Epost her"></input></br>
-     Id-Nummer: <input id="idNumber" type ="text" value="Id Nummer her"></input> 
+     Navn: <input id="name" type="text" placeholder="Navn her"></input></br>
+     Firma: <input id="firm" type="text" placeholder="Firma her"></input> </br>  
+     Kontakt Person: <input id="contact" type="text" placeholder="Navn på Kontaktperson"></input> </br>
+     Telefon Nummer: <input id="number" type="text" placeholder="Tlf her"></input></br>
+     Epost: <input id="mail" type="text" placeholder="Epost her"></input></br>
+     Id-Nummer: <input id="idNumber" type ="text" placeholder="Id Nummer her"></input> 
      
      </br>
      </hr>`;
+
+    } else {
+        html += `
+        <div class="content">
+          Navn: <input id="name" type="text" placeholder="Navn her"></input></br>
+          Kontakt Person: <input id="contact" type="text" placeholder="Navn på Kontaktperson"></input> </br>
+          Telefon Nummer: <input id="number" type="text" placeholder="Tlf her"></input></br>
+          Epost: <input id="mail" type="text" placeholder="Epost her"></input></br>
+
+          </br>
+     </hr>
+          `
+    }
     writeOrderForms();
     output.innerHTML = backtoOrdersHTML + html;
 }
+
 
 function writeOrderForms() {
     cakeTypes();
@@ -240,27 +282,30 @@ function RestOfForm() {
     html += ` </br>
     Med marsipan: <input type="checkbox" id="withMarsipan"></input> </br>
     Uten marsipan: <input type="checkbox" id="woMarsipan"></input> </br>
-    Notat: <input id="notes" type="text" value="Notat til oss her"></input>
+    Notat: <input id="notes" type="text" placeholder="Notater her"></input>
     </br>
     Hentes: <input type="checkbox" ></input> </br>
     Leveres: <input type="checkbox" id="delivery"></input> </br>
-    Leverings Adresse: <input id="deliveryAdress" type="text" value="Adresse her"></input> </br>
+    Leverings Adresse: <input id="deliveryAdress" type="text" placeholder="Adresse her"></input> </br>
     Dato: <input type="date" id="deliveryDate"></input> </br>
-    Tidspunkt: <input id="timeOfDelivery" type="text" value="Hente/leveringstidspunkt"></input> </br>
-    Faktura nummer: <input id="invoiceNumber" type="text" value="Faktura nummer her"></input> </br>
+    Tidspunkt: <input id="timeOfDelivery" type="text" placeholder="Hente/leveringstidspunkt"></input> </br>
+    Faktura nummer: <input id="invoiceNumber" type="text" placeholder="Faktura nummer her"></input> </br>
    
     
     Totalbeløp: ${model.cakeSizes[0].BasePrice}.- <br>
-    Betale i kasse: <input id="" type="checkbox"></input> </br>
+    Betale i kasse: <input id="payInStore" type="checkbox"></input> </br>
     Til Fakturering: <input id="toBilling" type="checkbox"></input> </br>
     <br>
-    Send inn ordre : <button onclick="pushOrder(), OrdersMainMenu(), convertAndfilterdates() ">Legg til Ordre</button>
+    Send inn ordre : <button onclick="pushOrder(), convertAndfilterdates() ">Legg til Ordre</button>
     </br>
     </div>`;
 
-
     output.innerHTML = backtoOrdersHTML + html;
 }
+
+
+
+
 
 function Billing() {
     html = ''
@@ -361,11 +406,4 @@ function inspectMode() {
     }
     html += `</div>`
     output.innerHTML = backtoOrdersHTML + html;
-}
-
-function editNote() {
-
-    
-
-
 }
