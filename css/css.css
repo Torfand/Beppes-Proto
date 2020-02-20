@@ -68,11 +68,6 @@ body {
 }
 
 
-/* .content>button {
-    padding: 50px;
-    margin: 3px
-} */
-
 .content>input {
     height: 30px;
     font-size: 16px;
@@ -192,10 +187,6 @@ tr {
 }
 
 
-/* sidebar */
-
-
-/* The side navigation menu */
 
 .sidenav {
     height: 100%;

@@ -2,7 +2,6 @@ let html;
 let popup;
 const backtoOrdersHTML = `<button onclick="OrdersMainMenu()" class="backBtn">Tilbake</button> `
 const backtoMainHTML = `<button onclick="updateView()" class="backBtn">Tilbake</button> `
-let toggleCalendarPane = false;
 
 function updateView() {
     html = '';
@@ -158,6 +157,7 @@ function AddOrder() {
 
 
 function writeOrderForms() {
+
     cakeTypes();
     cakeFillings();
     cakeBases();

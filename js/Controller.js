@@ -36,7 +36,6 @@ function convertAndfilterdates() {
 
 function formValues() {
     let name = document.getElementById("name").value
-    name = name;
     let firm = document.getElementById("firm").value
     let contact = document.getElementById("contact").value
     let phoneNr = document.getElementById("number").value
@@ -123,9 +122,9 @@ function getDateFromMS() {
 
     for (second of model.admin.calendarTempTime) {
         if (second.getDateFromMS == false) {
-            t = new Date(second.d).toLocaleDateString("nb-no");
+            Temp = new Date(second.d).toLocaleDateString("nb-no");
 
-            model.admin.calendarTempDates.push({ t, })
+            model.admin.calendarTempDates.push({ Temp, })
             second.getDateFromMS = true;
         }
 
@@ -148,10 +147,11 @@ function filterListById(listOfIds, listOfObjects) {
 function makecomparisonIndex() {
 
     for (let order in model.admin.orders) {
+
         for (let date in model.admin.orders[order]) {
 
             if (model.admin.orders[order].hasOwnProperty("deliveryDate") && date == 'deliveryDate') {
-                model.admin.orders[order].deliveryDate = model.admin.calendarTempDates[order].t;
+                model.admin.orders[order].deliveryDate = model.admin.calendarTempDates[order].Temp;
 
 
 
@@ -167,9 +167,8 @@ function saveNote(selected) {
         id = i
     }
     let date = selected.id;
-    let isNew = true;
     let task = document.getElementById('noteInput').value;
-    model.admin.calendarNotes.push({ id, task, date, isNew })
+    model.admin.calendarNotes.push({ id, task, date })
     dailyNote(date);
 
 
