@@ -178,7 +178,7 @@ function AddOrder(firmOrder, a, b) {
     if (firmOrder.checked == true && a == true) {
         html += `
 
-     <div class="content">
+     <div class="content addOrder">
      Navn: <input id="name" type="text" placeholder="Navn her"></input></br>
      Firma: <input id="firm" type="text" placeholder="Firma her"></input> </br>  
      Kontakt Person: <input id="contact" type="text" placeholder="Navn på Kontaktperson"></input> </br>
@@ -191,7 +191,7 @@ function AddOrder(firmOrder, a, b) {
 
     } else {
         html += `
-        <div class="content">
+        <div class="content addOrder">
           Navn: <input id="name" type="text" placeholder="Navn her"></input></br>
           Kontakt Person: <input id="contact" type="text" placeholder="Navn på Kontaktperson"></input> </br>
           Telefon Nummer: <input id="number" type="text" placeholder="Tlf her"></input></br>
@@ -306,24 +306,22 @@ function RestOfForm() {
 
 function Billing() {
     html = ''
-    html += `<h1 class="header">Til Faktura</h1>`
+    html += `<h1 class="header">Til Faktura</h1>
+    <div class="content billing"> `
     for (bills of model.admin.orders) {
         if (bills.toBilling == true) {
             html += ` 
-            <div class="content"> 
                       ${bills.name},
-                      ${bills.cakeType},         
-                      ${bills.deliveryDate}, 
-                      ${bills.deliveryTime},
-                      ${bills.size},
-                      ${bills.note},`
+                      ${bills.cakeType},
+                      ${bills.size},`
             bills.delivery == true ? html += ` Skal Leveres,` : ''
 
 
 
             html += `<br>
                        <button onclick="toggleInspectMode(${bills.id})">Se Ordre</button>  <button onclick="approveOrder(${bills.id}), Billing()">Godkjenn</button>
-                       <br>  `
+                       <br>
+                        `
         }
     }
     html += `</div>`;
@@ -332,19 +330,18 @@ function Billing() {
 
 function ApprovedOrders() {
     html = '';
-    html += ` 
-    <div class="content"><h1>Godkjente Bestillinger</h1>`;
+    html += `<h1 class="header">Godkjente Bestillinger</h1>
+    <div class="content approved">`
     for (bills of model.admin.orders) {
         if (bills.isApproved == true) {
             html +=
                 `${bills.name},
              ${bills.cakeType} ,
-             ${bills.deliveryDate}, 
-             ${bills.deliveryTime},
+             ${bills.deliveryDate},
              <br>
              <button onclick="toggleInspectMode(${bills.id})">Se ordre</button>
               <br>  
-             <hr>
+             
              `;
         }
 
@@ -356,14 +353,16 @@ function ApprovedOrders() {
 
 function CanceledOrders() {
     html = '';
-    html += `
-     <div class="content"><h1>Kanselerte Bestillinger</h1>`;
+    html += `<h1 class="header">Kanselerte Bestillinger</h1>
+     <div class="content canceled">`;
     for (bills of model.admin.orders) {
         if (bills.isCanceled == true) {
             html += `${bills.name},
                  ${bills.cakeType},
              <br>
-            <button onclick="toggleInspectMode(${bills.id})">Se ordre</button> </br>`;
+             
+            <button onclick="toggleInspectMode(${bills.id})">Se ordre</button> </br>
+            `;
         }
     }
     html += `</div>`

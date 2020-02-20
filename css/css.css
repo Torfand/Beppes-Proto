@@ -17,7 +17,7 @@
 }
 
 body {
-    background-image: url(beppe.jpg);
+    background-image: url(beppe2.jpg);
     background-size: 100vw;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -28,7 +28,43 @@ body {
     grid-area: 2 / 2 / 12 / 12;
     text-align: center;
     align-self: center;
-    transition: 2s;
+    transition: 0.9s;
+}
+
+.billing {
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.089);
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.approved {
+    margin: auto;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.089);
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.canceled {
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.089);
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.addOrder {
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.103);
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -114,6 +150,11 @@ input[type=date] {
 
 .inspect {
     margin: auto;
+    background-color: rgba(0, 0, 0, 0.089);
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 table,
@@ -132,7 +173,7 @@ td {
 }
 
 th {
-    background-color: blue;
+    background-color: rgb(247, 2, 2);
     border: 1px solid black;
     border-collapse: collapse;
     padding: 8px;
@@ -165,7 +206,7 @@ tr {
     right: 0;
     overflow-x: hidden;
     padding-top: 60px;
-    transition-duration: 2s;
+    transition-duration: 0.9s;
     background-image: url(https://cdn.sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg);
     background-repeat: no-repeat;
 }
@@ -174,7 +215,7 @@ tr {
     margin-bottom: 100px;
     margin-left: 200px;
     display: block;
-    transition: 10s;
+    transition: 0.9s;
     padding: 20px;
 }
 
@@ -184,7 +225,7 @@ tr {
     font-size: 25px;
     color: white;
     display: block;
-    transition: 10s;
+    transition: 0.9s;
 }
 
 .sidenav li:hover {

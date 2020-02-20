@@ -13,9 +13,9 @@ function pushOrder() {
     } else if (cakeType == 3) {
         cakeType = 'Raw kake'
     }
-    if (name == '' && contact == '' && phoneNr == '' && email == '' && adress == '' ||
-        name == '' || contact == '' || phoneNr == '' || email == '' || adress == '') {
-        return alert('Navn, Kontakt Person, Tlf Nr, E-Post og Adresse må være utfylt');
+    if (name == '' && contact == '' && phoneNr == '' && email == '' && adress == '' && deliveryDate == '' ||
+        name == '' || contact == '' || phoneNr == '' || email == '' || adress == '' || deliveryDate == '') {
+        return alert('Navn, kontakt person, telefon nummer, epost adresse, adresse og dato må være utfylt for å legge til bestillingen');
     }
     model.admin.orders.push({ id, name, firm, contact, phoneNr, email, idNR, cakeType, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase, isCanceled, dateConvertedtoMS, })
 
@@ -63,7 +63,13 @@ function formValues() {
     let deliveryTime = document.getElementById("timeOfDelivery").value
     let invoiceNR = document.getElementById("invoiceNumber").value
     let toBilling = document.getElementById("toBilling").checked
+    let payInStore = document.getElementById('payInStore').checked
     let isApproved = false
+    if (payInStore == true) {
+        isApproved = true
+    } else {
+        isApproved = false
+    }
     let isCanceled = false;
     let dateConvertedtoMS = false;
 
