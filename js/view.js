@@ -4,12 +4,6 @@ const backtoOrdersHTML = `<button onclick="OrdersMainMenu()" class="backBtn">Til
 const backtoMainHTML = `<button onclick="updateView()" class="backBtn">Tilbake</button> `
 let toggleCalendarPane = false;
 
-
-
-
-
-
-
 function updateView() {
     html = '';
     html += `
@@ -20,15 +14,12 @@ function updateView() {
 
     for (button of model.admin.menuItems) {
         html += `
-        <button onclick="${button.createFunction}()" class="menubuttons">${button.buttonName}</button>
-        
-        `
+        <button onclick="${button.createFunction}()" class="menubuttons">${button.buttonName}</button>`;
 
     }
-    html += `</div>`
+    html += `</div>`;
     output.innerHTML = html;
 }
-
 
 function OrdersMainMenu() {
     html = '';
@@ -47,9 +38,6 @@ function OrdersMainMenu() {
 
 }
 
-
-
-
 function Calendar() {
     html = '';
     html = `
@@ -58,7 +46,7 @@ function Calendar() {
     <table>
     <tr>
     
-    `
+    `;
 
     for (day of model.admin.calendarDays) {
 
@@ -77,16 +65,11 @@ function Calendar() {
 
 
             if (i % 7 == 0) {
-                html += `</tr>`
+                html += `</tr>`;
 
             }
         }
     }
-
-
-
-
-
     html += `
                 </tr>
                 </table>
@@ -101,9 +84,7 @@ function Calendar() {
 
 function dailyNote(date) {
     makecomparisonIndex();
-
-
-    popup = `<div id="mySidenav" class="sidenav"> <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>`
+    popup = `<div id="mySidenav" class="sidenav"> <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>`;
     popup += `<button id="${date.innerHTML}" onclick="editNote(this)">Legg til Notat</button> 
     <div id="note">`
     for (order of model.admin.orders) {
@@ -114,10 +95,8 @@ function dailyNote(date) {
             <li>Tidspunkt: ${order.deliveryTime}</li>
                     </ul>`
         }
-
     }
-    popup += `</div> <div>`
-
+    popup += `</div> <div>`;
     for (activity of model.admin.calendarNotes) {
         if (date.innerHTML == activity.date) {
             popup += `<ul>
@@ -125,21 +104,18 @@ function dailyNote(date) {
             </ul>`
         }
     }
-    popup += `</div> </div>`
+    popup += `</div> </div>`;
     output.innerHTML = backtoOrdersHTML + html + popup;
 
 }
 
 function editNote(date) {
-
     let note = document.getElementById('note');
-    note.innerHTML = `<input type="text" id="noteInput"></input><button id="${date.id}" onclick="saveNote(this)">Lagre notat</button>`
+    note.innerHTML = `<input type="text" id="noteInput"></input><button id="${date.id}" onclick="saveNote(this)">Lagre notat</button>`;
 
 }
 
 function openNav(id) {
-
-
     document.getElementById(id).classList.add('active');
     setTimeout(() => { extendSidebar() }, 1)
 
@@ -153,31 +129,17 @@ function extendSidebar() {
 }
 
 function closeNav() {
-
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("content").style.marginRight = "0";
 
 }
 
-function orderType() {
-    let a = true;
-    let b = false;
+
+
+
+function AddOrder() {
     html = '';
-    html += ` <div class="content ">Firma:<input class="orderType" id="firmOrder" type="checkbox" onchange="AddOrder(this,${a})"></input> 
-             Privat:<input class="orderType" type="checkbox" onchange="AddOrder(this,${b})"></input> </div>                             `
-
-    output.innerHTML = backtoOrdersHTML + html;
-}
-
-
-
-function AddOrder(firmOrder, a, b) {
-    console.log(firmOrder, a, b)
-    html = '';
-
-    if (firmOrder.checked == true && a == true) {
-        html += `
-
+    html += `
      <div class="content addOrder">
      Navn: <input id="name" type="text" placeholder="Navn her"></input></br>
      Firma: <input id="firm" type="text" placeholder="Firma her"></input> </br>  
@@ -188,22 +150,11 @@ function AddOrder(firmOrder, a, b) {
      
      </br>
      </hr>`;
-
-    } else {
-        html += `
-        <div class="content addOrder">
-          Navn: <input id="name" type="text" placeholder="Navn her"></input></br>
-          Kontakt Person: <input id="contact" type="text" placeholder="Navn på Kontaktperson"></input> </br>
-          Telefon Nummer: <input id="number" type="text" placeholder="Tlf her"></input></br>
-          Epost: <input id="mail" type="text" placeholder="Epost her"></input></br>
-
-          </br>
-     </hr>
-          `
-    }
     writeOrderForms();
     output.innerHTML = backtoOrdersHTML + html;
 }
+
+
 
 
 function writeOrderForms() {
@@ -259,9 +210,7 @@ function cakeSizes() {
 }
 
 function cakeAddons() {
-
     html += `<br> Tillegg: <select id="addon">`;
-
     const cakeAddOns = filteredListBasedOnIdAndOtherList(
         model.orderInProgress.cakeTypeId,
         model.cakeTypes, 'cakeAddOns', model.cakeAddOns);
@@ -296,7 +245,6 @@ function RestOfForm() {
     Send inn ordre : <button onclick="pushOrder(), convertAndfilterdates() ">Legg til Ordre</button>
     </br>
     </div>`;
-
     output.innerHTML = backtoOrdersHTML + html;
 }
 
@@ -315,9 +263,6 @@ function Billing() {
                       ${bills.cakeType},
                       ${bills.size},`
             bills.delivery == true ? html += ` Skal Leveres,` : ''
-
-
-
             html += `<br>
                        <button onclick="toggleInspectMode(${bills.id})">Se Ordre</button>  <button onclick="approveOrder(${bills.id}), Billing()">Godkjenn</button>
                        <br>
@@ -340,11 +285,8 @@ function ApprovedOrders() {
              ${bills.deliveryDate},
              <br>
              <button onclick="toggleInspectMode(${bills.id})">Se ordre</button>
-              <br>  
-             
-             `;
+            <br>`;
         }
-
     }
     html += `</div> `
     output.innerHTML = backtoOrdersHTML + html;
@@ -359,13 +301,12 @@ function CanceledOrders() {
         if (bills.isCanceled == true) {
             html += `${bills.name},
                  ${bills.cakeType},
-             <br>
-             
+            <br>  
             <button onclick="toggleInspectMode(${bills.id})">Se ordre</button> </br>
             `;
         }
     }
-    html += `</div>`
+    html += `</div>`;
     output.innerHTML = backtoOrdersHTML + html;
 }
 

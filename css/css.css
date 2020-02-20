@@ -207,7 +207,7 @@ tr {
     overflow-x: hidden;
     padding-top: 60px;
     transition-duration: 0.9s;
-    background-image: url(https://cdn.sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg);
+    background-image: url(https://tinyurl.com/tbv6scp);
     background-repeat: no-repeat;
 }
 
@@ -226,6 +226,7 @@ tr {
     color: white;
     display: block;
     transition: 0.9s;
+    color: black;
 }
 
 .sidenav li:hover {

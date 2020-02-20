@@ -6,7 +6,7 @@ const model = {
 
     cakeTypes: [
         { id: 1, name: 'Rund Bløtkake Med Marsipan', cakeFillings: [1, 2, 3, 5], cakeBases: [1], cakeAddOns: [1, 4, 5], cakeSizes: [1], },
-        { id: 2, name: 'Sjokoladekake Standard', cakeFillings: [4], cakeBases: [2], cakeAddOns: [1, 2], cakeSizes: [2], cakePrice: [2, ] },
+        { id: 2, name: 'Sjokoladekake Standard', cakeFillings: [4], cakeBases: [2], cakeAddOns: [1, 2], cakeSizes: [2], cakePrice: [2] },
         { id: 3, name: 'Raw kake', cakeFillings: [4, 5, 6, 7], cakeBases: [6], cakeAddOns: [1, 3], cakeSizes: [2], cakePrice: [2] },
     ],
 
@@ -70,7 +70,7 @@ const model = {
         ],
         orderMenuItems: [
 
-            { createFunction: 'orderType', buttonName: 'Legg til Bestilling' },
+            { createFunction: 'AddOrder', buttonName: 'Legg til Bestilling' },
             { createFunction: 'Billing', buttonName: 'Til Fakturering' },
             { createFunction: 'ApprovedOrders', buttonName: 'Godkjente Bestillinger' },
             { createFunction: 'CanceledOrders', buttonName: 'Kanselerte Bestillinger' },
@@ -101,9 +101,9 @@ const model = {
 
 
         calendarNotes: [
-            { id: 0, orders: [0], task: 'Vask gulvet', responsible: '', date: '25.2.2020', isNew: false },
-            { id: 1, orders: [0], task: 'Bestill varer fra ASKO', date: '26.2.2020', isNew: false },
-            { id: 2, orders: [0], task: 'Rydd i kjøleskapet', date: '27.2.2020', isNew: true },
+            { id: 0, orders: [0], task: 'Vask gulvet', responsible: '', date: '25.2.2020', },
+            { id: 1, orders: [0], task: 'Bestill varer fra ASKO', date: '26.2.2020', },
+            { id: 2, orders: [0], task: 'Rydd i kjøleskapet', date: '27.2.2020', },
 
 
         ],
@@ -131,7 +131,7 @@ const model = {
                 isCanceled: false,
                 withMarsipan: true,
                 inspectMode: false,
-                firmOrder: false,
+
             },
             {
                 id: 1,
@@ -156,7 +156,7 @@ const model = {
                 inspectMode: false,
                 isCanceled: false,
                 withMarsipan: false,
-                firmOrder: false,
+
             },
             {
                 id: 2,
@@ -181,7 +181,7 @@ const model = {
                 isCanceled: true,
                 inspectMode: false,
                 withMarsipan: false,
-                firmOrder: false,
+
             },
 
 

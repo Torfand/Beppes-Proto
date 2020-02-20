@@ -13,6 +13,9 @@ function pushOrder() {
     } else if (cakeType == 3) {
         cakeType = 'Raw kake'
     }
+    if (firm != '' && idNR == '' || idNR != '' && firm == '') {
+        return alert('Fyll inn id nummer og firma navn');
+    }
     if (name == '' && contact == '' && phoneNr == '' && email == '' && adress == '' && deliveryDate == '' ||
         name == '' || contact == '' || phoneNr == '' || email == '' || adress == '' || deliveryDate == '') {
         return alert('Navn, kontakt person, telefon nummer, epost adresse, adresse og dato må være utfylt for å legge til bestillingen');
@@ -28,27 +31,17 @@ function pushOrder() {
 function convertAndfilterdates() {
     convertDateToMS();
     getDateFromMS();
-    // makecomparisonIndex();
 
 }
 
 function formValues() {
     let name = document.getElementById("name").value
-    let firm = document.getElementById("firm")
-    if (firm == null) {
-        firm = 'ingen'
-    } else {
-        firm = firm.value
-    }
+    name = name;
+    let firm = document.getElementById("firm").value
     let contact = document.getElementById("contact").value
     let phoneNr = document.getElementById("number").value
     let email = document.getElementById("mail").value
-    let idNR = document.getElementById("idNumber")
-    if (idNR == null) {
-        idNR = 'ingen'
-    } else {
-        idNR = idNR.value
-    }
+    let idNR = document.getElementById("idNumber").value
     let cakeType = document.getElementById('cakeSelector').value
     let cakeFilling = document.getElementById('cakeFillingSelector').value
     let cakeBase = document.getElementById('cakeBaseSelector').value
@@ -66,9 +59,9 @@ function formValues() {
     let payInStore = document.getElementById('payInStore').checked
     let isApproved = false
     if (payInStore == true) {
-        isApproved = true
+        isApproved = true;
     } else {
-        isApproved = false
+        isApproved = false;
     }
     let isCanceled = false;
     let dateConvertedtoMS = false;
@@ -158,7 +151,7 @@ function makecomparisonIndex() {
         for (let date in model.admin.orders[order]) {
 
             if (model.admin.orders[order].hasOwnProperty("deliveryDate") && date == 'deliveryDate') {
-                model.admin.orders[order].deliveryDate = model.admin.calendarTempDates[order].t
+                model.admin.orders[order].deliveryDate = model.admin.calendarTempDates[order].t;
 
 
 
@@ -173,7 +166,7 @@ function saveNote(selected) {
     for (let i = 0; i <= model.admin.calendarNotes.length; i++) {
         id = i
     }
-    let date = selected.id
+    let date = selected.id;
     let isNew = true;
     let task = document.getElementById('noteInput').value;
     model.admin.calendarNotes.push({ id, task, date, isNew })
