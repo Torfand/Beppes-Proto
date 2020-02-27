@@ -91,6 +91,10 @@ function cancelOrder(orderID) {
 
 
 }
+function completeOrder(orderID) {
+    model.admin.orders[orderID].isComplete = true;
+
+}
 
 function toggleInspectMode(orderID) {
     let order = model.admin.orders[orderID];
@@ -167,13 +171,23 @@ function saveNote(selected) {
         id = i
     }
     let date = selected.id;
+    let isComplete = true
     let task = document.getElementById('noteInput').value;
-    model.admin.calendarNotes.push({ id, task, date })
+    model.admin.calendarNotes.push({ id, task, date, isComplete })
     dailyNote(date);
 
 
 
 
 
+
+}
+function taskComplete(index) {
+    
+    for (note of model.admin.calendarNotes) {
+        if (note.id == index) {
+           note.isComplete = true;
+        }
+    }
 
 }

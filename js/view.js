@@ -72,6 +72,7 @@ function Calendar() {
 }
 
 function dailyNote(date) {
+    let j = 0;
     makecomparisonIndex();
     popup = `<div id="mySidenav" class="sidenav"> <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>`;
     popup += `<button id="${date.innerHTML}" onclick="editNote(this)">Legg til Notat</button> 
@@ -89,14 +90,21 @@ function dailyNote(date) {
         }
     }
     popup += `</div> <div>
-    <p>Oppgaver:</p>`;
+    <p>Dagens Oppgaver:</p>`;
+
     for (activity of model.admin.calendarNotes) {
-        if (date.innerHTML == activity.date) {
+        j++
+        if (date.innerHTML == activity.date && activity.isComplete == false) {
+            console.log(j)
             popup += `<ol><ul>
-            <li>${activity.task}</li>
+            <li>${activity.task} <input id="taskCheckbox"type="checkbox" onchange="taskComplete(${j}), dailyNote(date)"/></li>
             </ul></ol>`
+
         }
     }
+
+
+
     popup += `</div> </div>`;
     output.innerHTML = backtoOrdersHTML + html + popup;
 
@@ -297,6 +305,22 @@ function CanceledOrders() {
     html += `</div>`;
     output.innerHTML = backtoOrdersHTML + html;
 }
+function CompletedOrders() {
+    html = "";
+    html += `<h1 class="header">Ferdige Bestillinger</h1>
+     <div class="content Complete">`;
+    for (bills of model.admin.orders) {
+        if (bills.isComplete == true) {
+            html += `${bills.name},
+                 ${bills.cakeType},
+            <br>  
+            <button onclick="toggleInspectMode(${bills.id})">Se ordre</button> </br>
+            `;
+        }
+    }
+    html += `</div>`;
+    output.innerHTML = backtoOrdersHTML + html;
+}
 
 function inspectMode() {
     for (order of model.admin.orders) {
@@ -332,6 +356,8 @@ function inspectMode() {
             order.isCanceled == false ?
                 (html += `<button onclick="cancelOrder(${order.id}), OrdersMainMenu()"> Kanseler Ordre </button> `) :
                 "";
+            order.isComplete == false ?
+                (html += `<button onclick="completeOrder(${order.id}), OrdersMainMenu()"> Ferdigstill Ordre </button> `) : '';
         }
     }
     html += `</div>`;
