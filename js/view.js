@@ -80,7 +80,7 @@ function dailyNote(date) {
     <h1>${date.innerHTML}</h1><br/>
     <p>Bestillinger:</p>`
     for (order of model.admin.orders) {
-        if (date.innerHTML == order.deliveryDate) {
+        if (date.innerHTML == order.deliveryDate && order.isCanceled == false) {
             popup += `<ol><ul>
             <li>Name: ${order.name}</li>
             <li>Kaketype: ${order.cakeType}</li>
@@ -112,7 +112,10 @@ function dailyNote(date) {
 
 function editNote(date) {
     let note = document.getElementById("note");
-    note.innerHTML = `<input type="text" id="noteInput"></input><button id="${date.id}" onclick="saveNote(this)">Lagre notat</button>`;
+    note.innerHTML = `
+                <input type="text" id="noteInput"></input>
+                <button id="${date.id}" onclick="saveNote(this)">Lagre notat</button>
+                `;
 }
 
 function openNav(id) {
@@ -134,7 +137,7 @@ function closeNav() {
 }
 
 function AddOrder() {
-    html = "";
+    html = '';
     html += `
      <div class="content addOrder">
      Navn: <input id="name" type="text" placeholder="Navn her"></input></br>
@@ -163,8 +166,7 @@ function cakeTypes() {
     html += `
         Kaketype:<select id="cakeSelector" oninput="model.orderInProgress.cakeTypeId = this.value; AddOrder()">`;
     for (cakeType of model.cakeTypes) {
-        const selected =
-            model.orderInProgress.cakeTypeId == cakeType.id ? "selected" : "";
+        const selected = model.orderInProgress.cakeTypeId == cakeType.id ? "selected" : "";
         html += `<option  ${selected} value="${cakeType.id}">${cakeType.name}</option>`;
     }
     html += `</select>`;

@@ -118,8 +118,8 @@ function convertDateToMS() {
         }
 
     }
+    
 }
-
 
 
 function getDateFromMS() {
