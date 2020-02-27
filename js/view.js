@@ -72,7 +72,7 @@ function Calendar() {
 }
 
 function dailyNote(date) {
-    let j = 0;
+    let j = -1;
     makecomparisonIndex();
     popup = `<div id="mySidenav" class="sidenav"> <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>`;
     popup += `<button id="${date.innerHTML}" onclick="editNote(this)">Legg til Notat</button> 
@@ -94,8 +94,8 @@ function dailyNote(date) {
 
     for (activity of model.admin.calendarNotes) {
         j++
+        console.log(j)
         if (date.innerHTML == activity.date && activity.isComplete == false) {
-            console.log(j)
             popup += `<ol><ul>
             <li>${activity.task} <input id="taskCheckbox"type="checkbox" onchange="taskComplete(${j}), dailyNote(date)"/></li>
             </ul></ol>`
