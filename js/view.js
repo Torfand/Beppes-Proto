@@ -42,10 +42,10 @@ function Calendar() {
     <tr>
     
     `;
-
+    let s = 0;
     for (day of model.admin.calendarDays) {
         html += `
-                <th>${day.day}</th>`;
+        <th>${day.day}</th>`;
     }
     html += `</tr>`;
     html += `<tr>`;
@@ -53,9 +53,10 @@ function Calendar() {
     for (month of model.admin.calendarMonths) {
         for (let i = 1; i <= month.February; i++) {
             x = new Date(2020, 1, i).toLocaleDateString("nb-no");
+         
             html += `
                     <td onclick="${month.createFunction}(this), openNav(${i})" id="${i}">${x}</td>`;
-                    
+
 
             if (i % 7 == 0) {
                 html += `</tr>`;

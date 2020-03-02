@@ -102,9 +102,9 @@ const model = {
 
 
         calendarNotes: [
-            { id: 0, orders: [0], task: 'Vask gulvet', date: '25.2.2020', isComplete: false, isNew: false },
-            { id: 1, orders: [0], task: 'Bestill varer fra ASKO', date: '26.2.2020', isComplete: false, isNew: false },
-            { id: 2, orders: [0], task: 'Rydd i kjøleskapet', date: '27.2.2020', isComplete: false, isNew: true },
+            { id: 0, orders: [0], task: 'Vask gulvet', date: '25.2.2020', isComplete: false,  },
+            { id: 1, orders: [0], task: 'Bestill varer fra ASKO', date: '26.2.2020', isComplete: false,  },
+            { id: 2, orders: [0], task: 'Rydd i kjøleskapet', date: '27.2.2020', isComplete: false,  },
 
 
 
@@ -134,7 +134,7 @@ const model = {
             withMarsipan: true,
             inspectMode: false,
             isComplete: false,
-            isNew: true
+          
 
         },
         {
@@ -161,7 +161,7 @@ const model = {
             isCanceled: false,
             withMarsipan: false,
             isComplete: false,
-            isNew: false
+            
 
         },
         {
@@ -188,7 +188,7 @@ const model = {
             inspectMode: false,
             withMarsipan: false,
             isComplete: false,
-            isNew: false
+     
 
         },
 
@@ -216,7 +216,7 @@ const model = {
             withMarsipan: true,
             inspectMode: false,
             isComplete: true,
-            isNew: false
+          
 
         },
 

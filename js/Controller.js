@@ -13,9 +13,11 @@ function pushOrder() {
     } else if (cakeType == 3) {
         cakeType = 'Raw kake'
     }
+    //
     if (firm != '' && idNR == '' || idNR != '' && firm == '') {
         return alert('Fyll inn id nummer og firma navn');
     }
+    
     if (name == '' && contact == '' && phoneNr == '' && email == '' && adress == '' && deliveryDate == '' ||
         name == '' || contact == '' || phoneNr == '' || email == '' || adress == '' || deliveryDate == '') {
         return alert('Navn, kontakt person, telefon nummer, epost adresse, adresse og dato må være utfylt for å legge til bestillingen');
@@ -177,10 +179,6 @@ function saveNote(selected) {
     let task = document.getElementById('noteInput').value;
     model.admin.calendarNotes.push({ id, task, date, isComplete, isNew})
     dailyNote(date);
-
-
-
-
 
 
 }
