@@ -55,6 +55,7 @@ function Calendar() {
             x = new Date(2020, 1, i).toLocaleDateString("nb-no");
             html += `
                     <td onclick="${month.createFunction}(this), openNav(${i})" id="${i}">${x}</td>`;
+                    
 
             if (i % 7 == 0) {
                 html += `</tr>`;
@@ -355,9 +356,9 @@ function inspectMode() {
             Notat: ${order.note} <br>
             Id-nr : ${order.idNR} <br>
             Faktura-Nummer : ${order.invoiceNR} <br> `;
-            order.isCanceled == false ?
-                (html += `<button onclick="cancelOrder(${order.id}), OrdersMainMenu()"> Kanseler Ordre </button> `) :
-                "";
+            if (order.isCanceled == false && order.isComplete == false) {
+                html += `<button onclick="cancelOrder(${order.id}), OrdersMainMenu()"> Kanseler Ordre </button> `
+            }
             order.isComplete == false ?
                 (html += `<button onclick="completeOrder(${order.id}), OrdersMainMenu()"> Ferdigstill Ordre </button> `) : '';
         }

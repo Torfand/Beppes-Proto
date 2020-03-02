@@ -1,5 +1,5 @@
 function pushOrder() {
-    let { cakeType, name, firm, contact, phoneNr, email, idNR, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase, isCanceled, dateConvertedtoMS, } = formValues()
+    let { cakeType, name, firm, contact, phoneNr, email, idNR, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase, isCanceled, dateConvertedtoMS, isNew } = formValues()
 
     let id = 0
     for (let i = 0; i <= model.admin.orders.length; i++) {
@@ -20,7 +20,7 @@ function pushOrder() {
         name == '' || contact == '' || phoneNr == '' || email == '' || adress == '' || deliveryDate == '') {
         return alert('Navn, kontakt person, telefon nummer, epost adresse, adresse og dato må være utfylt for å legge til bestillingen');
     }
-    model.admin.orders.push({ id, name, firm, contact, phoneNr, email, idNR, cakeType, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase, isCanceled, dateConvertedtoMS, })
+    model.admin.orders.push({ id, name, firm, contact, phoneNr, email, idNR, cakeType, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase, isCanceled, dateConvertedtoMS, isNew })
 
     convertDateToMS();
     OrdersMainMenu();
@@ -64,8 +64,8 @@ function formValues() {
     }
     let isCanceled = false;
     let dateConvertedtoMS = false;
-
-    return { cakeType, name, firm, contact, phoneNr, email, idNR, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase, isCanceled, dateConvertedtoMS, }
+    let isNew = true
+    return { cakeType, name, firm, contact, phoneNr, email, idNR, size, addon, withMarsipan, woMarsipan, delivery, adress, note, deliveryDate, deliveryTime, invoiceNR, toBilling, isApproved, cakeFilling, cakeBase, isCanceled, dateConvertedtoMS, isNew }
 }
 
 function approveOrder(orderID) {
@@ -118,7 +118,7 @@ function convertDateToMS() {
         }
 
     }
-    
+
 }
 
 
@@ -170,11 +170,12 @@ function saveNote(selected) {
     for (let i = 0; i <= model.admin.calendarNotes.length; i++) {
         id = i
     }
-   
+
     let date = selected.id;
-   let isComplete = false;
+    let isComplete = false;
+    let isNew = true
     let task = document.getElementById('noteInput').value;
-    model.admin.calendarNotes.push({ id, task, date, isComplete })
+    model.admin.calendarNotes.push({ id, task, date, isComplete, isNew})
     dailyNote(date);
 
 
@@ -184,10 +185,10 @@ function saveNote(selected) {
 
 }
 function taskComplete(index) {
-    
+
     for (note of model.admin.calendarNotes) {
         if (note.id == index) {
-           note.isComplete = true;
+            note.isComplete = true;
         }
     }
 
