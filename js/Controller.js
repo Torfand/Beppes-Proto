@@ -175,9 +175,9 @@ function saveNote(selected) {
 
     let date = selected.id;
     let isComplete = false;
-    let isNew = true
+    
     let task = document.getElementById('noteInput').value;
-    model.admin.calendarNotes.push({ id, task, date, isComplete, isNew})
+    model.admin.calendarNotes.push({ id, task, date, isComplete})
     dailyNote(date);
 
 

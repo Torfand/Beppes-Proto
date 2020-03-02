@@ -84,7 +84,7 @@ function dailyNote(date) {
     for (order of model.admin.orders) {
         if (date.innerHTML == order.deliveryDate && order.isCanceled == false) {
             popup += `<ol><ul>
-            <li>Name: ${order.name}</li>
+            <li>Navn: ${order.name}</li>
             <li>Kaketype: ${order.cakeType}</li>
             <li>Tidspunkt: ${order.deliveryTime}</li>
             <li>Email: ${order.email}</li>
@@ -343,8 +343,8 @@ function inspectMode() {
             Kakestørrelse: ${order.size} <br>
             Tillegg: ${order.addon} <br>`;
             order.withMarsipan == true ?
-                (order.withMarsipan = "Ja") :
-                (order.withMarsipan = "Nei");
+                order.withMarsipan = "Ja" :
+                order.withMarsipan = "Nei";
             html += ` Marsipan?: ${order.withMarsipan} <br> `;
             if (order.delivery != true) {
                 order.delivery = "Skal ikke leveres";

@@ -2,8 +2,6 @@ const model = {
 
     // NO CHANGES!!!!!
 
-
-
     cakeTypes: [
         { id: 1, name: 'Rund Bløtkake Med Marsipan', cakeFillings: [1, 2, 3, 5], cakeBases: [1], cakeAddOns: [1, 4, 5], cakeSizes: [1], },
         { id: 2, name: 'Sjokoladekake Standard', cakeFillings: [4], cakeBases: [2], cakeAddOns: [1, 2], cakeSizes: [2], cakePrice: [2] },
@@ -69,7 +67,6 @@ const model = {
 
         ],
         orderMenuItems: [
-
             { createFunction: 'AddOrder', buttonName: 'Legg til Bestilling' },
             { createFunction: 'Billing', buttonName: 'Til Fakturering' },
             { createFunction: 'ApprovedOrders', buttonName: 'Godkjente Bestillinger' },
@@ -77,7 +74,6 @@ const model = {
             { createFunction: 'CanceledOrders', buttonName: 'Kanselerte Bestillinger' },
 
         ],
-
 
         calendarMonths: [
             { createFunction: 'dailyNote', February: 28, },
@@ -100,13 +96,10 @@ const model = {
 
         ],
 
-
         calendarNotes: [
             { id: 0, orders: [0], task: 'Vask gulvet', date: '25.2.2020', isComplete: false,  },
             { id: 1, orders: [0], task: 'Bestill varer fra ASKO', date: '26.2.2020', isComplete: false,  },
             { id: 2, orders: [0], task: 'Rydd i kjøleskapet', date: '27.2.2020', isComplete: false,  },
-
-
 
         ],
 
@@ -137,6 +130,7 @@ const model = {
           
 
         },
+
         {
             id: 1,
             name: 'Kari Nordmann',
@@ -220,27 +214,8 @@ const model = {
 
         },
 
-
         ],
 
-
-
-
-
-
-
-
-
-
-
-
-
     },
-
-
-
-
-
-
 
 };
